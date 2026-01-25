@@ -2,22 +2,209 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Naming Advisory — DomainElevation</title>
-  <meta name="description" content="Private naming advisory for founders and teams navigating complex naming decisions where credibility, compliance, or scale is at stake." />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Private naming advisory for founders and teams navigating complex naming decisions." />
 
-  <script defer data-domain="domainelevation.com" src="https://analytics.example.com/js/script.js"></script>
+  <!-- Privacy-safe analytics (Plausible-style) -->
+  <script defer data-domain="domainelevation.com" src="https://plausible.io/js/script.js"></script>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text-primary: #111111;
+      --text-secondary: #444444;
+      --text-muted: #777777;
+      --border-light: #e5e5e5;
+      --max-width: 900px;
+      --font-serif: "Georgia", "Times New Roman", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --field-bg: #fafafa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    a:hover { border-bottom: 1px solid var(--text-primary); }
+
+    header { border-bottom: 1px solid var(--border-light); }
+
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+    nav ul { list-style: none; display: flex; gap: 24px; }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    section { margin-bottom: 70px; }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    p {
+      max-width: 740px;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .note {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .block {
+      border-top: 1px solid var(--border-light);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+
+    .diag {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .q {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .q label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      cursor: pointer;
+      color: var(--text-secondary);
+    }
+
+    .q input { margin-top: 4px; }
+
+    .score {
+      margin-top: 16px;
+      color: var(--text-secondary);
+    }
+
+    .score strong { color: var(--text-primary); }
+
+    form {
+      margin-top: 16px;
+      display: grid;
+      gap: 14px;
+      max-width: 740px;
+    }
+
+    .row {
+      display: grid;
+      gap: 6px;
+    }
+
+    label.formlabel {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    input[type="text"], input[type="email"], textarea, select {
+      width: 100%;
+      padding: 12px 12px;
+      border: 1px solid var(--border-light);
+      background: var(--field-bg);
+      font-size: 1rem;
+      color: var(--text-primary);
+      border-radius: 6px;
+      outline: none;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    .submit-wrap {
+      padding-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Intentionally NOT a button (per your doctrine) */
+    .mailto {
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 40px 20px;
+    }
+
+    footer .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0;
+    }
+
+    footer a { font-size: 0.9rem; }
+
+    @media (max-width: 600px) {
+      nav ul { gap: 16px; }
+      h1 { font-size: 1.9rem; }
+      main { padding: 60px 20px; }
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <nav>
-      <div class="brand">DomainElevation</div>
+      <div class="brand"><a href="/">DomainElevation</a></div>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/portfolios/">Portfolios</a></li>
-        <li><a href="/philosophy/">Philosophy</a></li>
-        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/portfolios">Portfolios</a></li>
+        <li><a href="/philosophy">Philosophy</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -25,97 +212,146 @@
   <main>
     <section>
       <h1>Naming Advisory</h1>
-      <div class="stack">
-        <p>
-          Naming becomes difficult when credibility, compliance, or scale is at stake.
-          DomainElevation works privately with founders, operators, and teams navigating complex naming decisions.
-        </p>
-        <p class="muted">
-          We do not start with inventory. We start with context.
-        </p>
-      </div>
+      <p>
+        Naming becomes difficult when credibility, compliance, or scale is at stake.
+        DomainElevation offers private naming advisory for founders and teams navigating complex naming decisions.
+      </p>
+      <p class="note">
+        We begin with context — not inventory.
+      </p>
     </section>
 
     <section>
-      <h2>What This Is For</h2>
-      <div class="stack">
-        <p>This is a fit if you are:</p>
-        <p class="muted">
-          Launching or rebranding • Facing trademark constraints • Uncomfortable with modifiers
-          • Building in regulated or trust-sensitive markets • Past the “just pick something” phase
-        </p>
+      <h2>Diagnostic</h2>
+      <p>
+        Answer the questions below. This is a self-assessment designed to surface naming friction early.
+      </p>
+
+      <div class="block">
+        <div class="diag" id="diagnostic">
+          <!-- 10 questions -->
+          <div class="q"><label><input type="checkbox" class="diag-check" />Would an enterprise customer take your domain seriously?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Would a regulator or compliance team view it as credible?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Is your name easily confused with another company?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Are you relying on modifiers (get, try, app, use, etc.)?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Do competitors own cleaner naming positions?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Would you confidently pitch this name to investors?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Does your name describe a feature instead of a category?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Could this name survive a pivot?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Will it age well in five to ten years?</label></div>
+          <div class="q"><label><input type="checkbox" class="diag-check" />Would someone remember it after hearing it once?</label></div>
+        </div>
+
+        <div class="score" id="scoreText">
+          <strong>Score:</strong> 0 / 10
+          <div class="note" id="scoreInterpretation" style="margin-top:8px;">
+            Low naming risk.
+          </div>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Request a Private Naming Review</h2>
-
-      <!-- NOTE: Replace action with your form handler (Formspree, Netlify Forms, custom endpoint, etc.) -->
-      <div class="form-wrap">
-        <form method="post" action="https://example.com/your-form-endpoint">
-          <div class="field">
-            <label for="project">Project / Company Name (or working name)</label>
-            <input id="project" name="project" type="text" autocomplete="organization" required />
-          </div>
-
-          <div class="field">
-            <label for="what">What are you building?</label>
-            <textarea id="what" name="what" placeholder="1–2 sentences." required></textarea>
-          </div>
-
-          <div class="field">
-            <label for="domain">Current domain (if any)</label>
-            <input id="domain" name="domain" type="text" placeholder="example.com" />
-          </div>
-
-          <div class="field">
-            <label for="concern">Primary concern</label>
-            <select id="concern" name="concern" required>
-              <option value="" disabled selected>Select one</option>
-              <option value="credibility">Credibility</option>
-              <option value="trademarks">Trademarks</option>
-              <option value="compliance">Compliance</option>
-              <option value="memorability">Memorability</option>
-              <option value="availability">Availability</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="timeline">Timeline</label>
-            <select id="timeline" name="timeline" required>
-              <option value="" disabled selected>Select one</option>
-              <option value="researching">Researching</option>
-              <option value="launching-soon">Launching soon</option>
-              <option value="rebranding">Rebranding</option>
-              <option value="urgent">Urgent</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="email">Best email to reach you</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
-            <div class="help">We respond privately. No mailing lists.</div>
-          </div>
-
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-
-      <p class="muted" style="margin-top:16px;">
-        If appropriate, we may surface privately held domain assets aligned with your situation.
-        Most conversations begin with clarity — not transactions.
+      <p>
+        If you’re unsure how to proceed, share a small amount of context and we’ll review privately.
       </p>
+
+      <!--
+        NOTE:
+        This form is intentionally “static”. Wire it to your backend or form service later.
+        For now, it can also be handled via mailto routing.
+      -->
+      <form id="namingForm">
+        <div class="row">
+          <label class="formlabel" for="project">Project or company name (or working name)</label>
+          <input type="text" id="project" name="project" autocomplete="organization" />
+        </div>
+
+        <div class="row">
+          <label class="formlabel" for="building">What are you building? (1–2 sentences)</label>
+          <textarea id="building" name="building"></textarea>
+        </div>
+
+        <div class="row">
+          <label class="formlabel" for="domain">Current domain (if any)</label>
+          <input type="text" id="domain" name="domain" autocomplete="url" />
+        </div>
+
+        <div class="row">
+          <label class="formlabel" for="concern">Primary concern</label>
+          <select id="concern" name="concern">
+            <option value="">Select one</option>
+            <option value="credibility">Credibility</option>
+            <option value="trademarks">Trademarks</option>
+            <option value="compliance">Compliance</option>
+            <option value="memorability">Memorability</option>
+            <option value="availability">Availability</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label class="formlabel" for="timeline">Timeline</label>
+          <select id="timeline" name="timeline">
+            <option value="">Select one</option>
+            <option value="researching">Researching</option>
+            <option value="launching-soon">Launching soon</option>
+            <option value="rebranding">Rebranding</option>
+            <option value="urgent">Urgent</option>
+          </select>
+        </div>
+
+        <div class="submit-wrap">
+          <div class="note">
+            To request a review, email:
+            <span class="mailto"><a href="mailto:hello@domainelevation.com">hello@domainelevation.com</a></span>
+          </div>
+          <div class="note" style="margin-top:10px;">
+            If you prefer, you can copy your responses above and include them in the email.
+          </div>
+        </div>
+      </form>
     </section>
   </main>
 
   <footer>
     <div class="footer-inner">
       <p>
-        DomainElevation also offers private naming advisory for founders and teams navigating
-        complex naming decisions.
+        DomainElevation also offers private naming advisory for founders and teams navigating complex naming decisions.
       </p>
-      <a href="/naming/">Naming Advisory</a>
+      <a href="/naming">Naming Advisory</a>
     </div>
   </footer>
+
+  <script>
+    // Diagnostic scoring (simple + private: no external calls)
+    (function () {
+      const checks = Array.from(document.querySelectorAll(".diag-check"));
+      const scoreText = document.getElementById("scoreText");
+      const interpretation = document.getElementById("scoreInterpretation");
+
+      function render() {
+        const score = checks.filter(c => c.checked).length;
+
+        // Update score
+        scoreText.firstChild.textContent = "";
+        scoreText.innerHTML = '<strong>Score:</strong> ' + score + ' / 10' +
+          '<div class="note" id="scoreInterpretation" style="margin-top:8px;"></div>';
+
+        const interpEl = document.getElementById("scoreInterpretation");
+
+        if (score <= 3) {
+          interpEl.textContent = "Low naming risk.";
+        } else if (score <= 6) {
+          interpEl.textContent = "Moderate naming friction. A private review may clarify tradeoffs.";
+        } else {
+          interpEl.textContent = "High naming risk. Naming is likely slowing credibility or scale.";
+        }
+      }
+
+      checks.forEach(c => c.addEventListener("change", render));
+      render();
+    })();
+  </script>
 </body>
 </html>
