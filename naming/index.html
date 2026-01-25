@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Naming Advisory — DomainElevation</title>
+  <meta name="description" content="Private naming advisory for founders and teams navigating complex naming decisions where credibility, compliance, or scale is at stake." />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <script defer data-domain="domainelevation.com" src="https://analytics.example.com/js/script.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">DomainElevation</div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolios/">Portfolios</a></li>
+        <li><a href="/philosophy/">Philosophy</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h1>Naming Advisory</h1>
+      <div class="stack">
+        <p>
+          Naming becomes difficult when credibility, compliance, or scale is at stake.
+          DomainElevation works privately with founders, operators, and teams navigating complex naming decisions.
+        </p>
+        <p class="muted">
+          We do not start with inventory. We start with context.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>What This Is For</h2>
+      <div class="stack">
+        <p>This is a fit if you are:</p>
+        <p class="muted">
+          Launching or rebranding • Facing trademark constraints • Uncomfortable with modifiers
+          • Building in regulated or trust-sensitive markets • Past the “just pick something” phase
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Request a Private Naming Review</h2>
+
+      <!-- NOTE: Replace action with your form handler (Formspree, Netlify Forms, custom endpoint, etc.) -->
+      <div class="form-wrap">
+        <form method="post" action="https://example.com/your-form-endpoint">
+          <div class="field">
+            <label for="project">Project / Company Name (or working name)</label>
+            <input id="project" name="project" type="text" autocomplete="organization" required />
+          </div>
+
+          <div class="field">
+            <label for="what">What are you building?</label>
+            <textarea id="what" name="what" placeholder="1–2 sentences." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="domain">Current domain (if any)</label>
+            <input id="domain" name="domain" type="text" placeholder="example.com" />
+          </div>
+
+          <div class="field">
+            <label for="concern">Primary concern</label>
+            <select id="concern" name="concern" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="credibility">Credibility</option>
+              <option value="trademarks">Trademarks</option>
+              <option value="compliance">Compliance</option>
+              <option value="memorability">Memorability</option>
+              <option value="availability">Availability</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="researching">Researching</option>
+              <option value="launching-soon">Launching soon</option>
+              <option value="rebranding">Rebranding</option>
+              <option value="urgent">Urgent</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="email">Best email to reach you</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+            <div class="help">We respond privately. No mailing lists.</div>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <p class="muted" style="margin-top:16px;">
+        If appropriate, we may surface privately held domain assets aligned with your situation.
+        Most conversations begin with clarity — not transactions.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>
+        DomainElevation also offers private naming advisory for founders and teams navigating
+        complex naming decisions.
+      </p>
+      <a href="/naming/">Naming Advisory</a>
+    </div>
+  </footer>
+</body>
+</html>
