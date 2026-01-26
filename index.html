@@ -11,154 +11,169 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
   <style>
-  :root {
-    --bg: #ffffff;
-    --text-primary: #111111;
-    --text-secondary: #444444;
-    --text-muted: #777777;
-    --border-light: #e5e5e5;
-    --max-width: 900px;
-    --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  :root{
+    --bg:#ffffff;
+    --text-primary:#111111;
+    --text-secondary:#444444;
+    --text-muted:#777777;
+    --border-light:#e5e5e5;
+    --max-width:900px;
+    --font-serif:"Georgia","Times New Roman",serif;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
 
-  body {
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:var(--font-sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
   }
 
-  a {
-    color: var(--text-primary);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
+  a{
+    color:var(--text-primary);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
   }
-  a:hover { border-bottom-color: var(--text-primary); }
+  a:hover{ border-bottom-color:var(--text-primary); }
 
-  /* Header + Nav */
-  header {
-    border-bottom: 1px solid var(--border-light);
-    background: var(--bg);
-  }
-
-  nav {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 22px 20px;               /* slightly tighter + cleaner */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+  header{
+    border-bottom:1px solid var(--border-light);
+    background:var(--bg);
   }
 
-  nav .brand a {
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    white-space: nowrap;              /* prevents “DomainElevation” wrapping */
-    border-bottom: 1px solid transparent; /* keep hover consistent */
+  nav{
+    max-width:var(--max-width);
+    margin:0 auto;
+    padding:22px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
   }
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 26px;                        /* more intentional spacing */
-    margin: 0;
-    padding: 0;
+  /* Brand */
+  nav .brand{
+    font-weight:500;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+    flex:0 0 auto;
+  }
+  nav .brand a{ border-bottom:1px solid transparent; }
+
+  /* Links */
+  nav ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:26px;
+    margin:0;
+    padding:0;
+    flex:1 1 auto;
+    justify-content:flex-end;
+    min-width:0;
   }
 
-  nav ul a {
-    font-size: 0.95rem;
-    letter-spacing: 0.01em;
-    padding: 6px 0;                   /* bigger click target */
+  nav ul a{
+    font-size:0.95rem;
+    letter-spacing:0.01em;
+    padding:8px 0;              /* bigger tap target */
+    color:var(--text-secondary); /* quieter chrome */
+  }
+  nav ul a:hover{
+    color:var(--text-primary);
+    border-bottom-color:var(--text-primary);
   }
 
-  /* Main layout */
-  main {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 80px 20px;
+  /* Main */
+  main{
+    max-width:var(--max-width);
+    margin:0 auto;
+    padding:64px 20px 80px;     /* tighter top padding */
   }
 
-  section { margin-bottom: 80px; }
+  section{ margin-bottom:80px; }
 
-  h1 {
-    font-family: var(--font-serif);
-    font-size: 2.4rem;
-    font-weight: 400;
-    margin-bottom: 24px;
-    letter-spacing: -0.01em;
+  h1{
+    font-family:var(--font-serif);
+    font-size:2.4rem;
+    font-weight:400;
+    letter-spacing:-0.01em;
+    margin-bottom:24px;
   }
 
-  h2 {
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 20px;
+  h2{
+    font-size:0.85rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    margin-bottom:20px;
   }
 
-  p {
-    max-width: 700px;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-bottom: 12px;              /* IMPORTANT: fixes paragraph spacing */
+  p{
+    max-width:700px;
+    color:var(--text-secondary);
+    font-size:1rem;
+    margin-bottom:12px;
   }
+  /* Prevent extra space after last paragraph in a block */
+  p:last-child{ margin-bottom:0; }
 
-  .portfolio { margin-bottom: 32px; }
+  .portfolio{ margin-bottom:32px; }
 
-  .portfolio-title {
-    font-weight: 500;
-    margin-bottom: 6px;
-    color: var(--text-primary);
+  .portfolio-title{
+    font-weight:500;
+    margin-bottom:6px;
+    color:var(--text-primary);
   }
 
   /* Footer */
-  footer {
-    border-top: 1px solid var(--border-light);
-    padding: 40px 20px;
+  footer{
+    border-top:1px solid var(--border-light);
+    padding:40px 20px;
   }
 
-  footer .footer-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
+  footer .footer-inner{
+    max-width:var(--max-width);
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
   }
 
-  footer p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin: 0;                        /* override global p spacing in footer */
+  footer p{
+    font-size:0.9rem;
+    color:var(--text-muted);
+    margin:0;
   }
 
-  footer a { font-size: 0.9rem; }
+  footer a{ font-size:0.9rem; }
 
   /* Mobile */
-  @media (max-width: 640px) {
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
+  @media (max-width:640px){
+    nav{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:14px;
+      padding:18px 20px;
     }
 
-    nav ul {
-      flex-wrap: wrap;
-      gap: 16px;
+    nav ul{
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      gap:16px;
+      width:100%;
     }
 
-    h1 { font-size: 2rem; }
+    h1{ font-size:2rem; }
 
-    main { padding: 60px 20px; }
+    main{ padding:56px 20px 70px; }
   }
 </style>
 </head>
