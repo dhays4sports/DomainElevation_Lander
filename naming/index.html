@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Naming Advisory — DomainElevation</title>
-  <meta name="description" content="Private naming review for founders and teams navigating complex naming decisions." />
+
+  <!-- Reframed title + description (diagnostic + constraints, not service) -->
+  <title>Naming Risk & Domain Reality — DomainElevation</title>
+  <meta name="description" content="A diagnostic for founders navigating naming risk, category positioning, and domain constraints. Understand availability and defensibility before you lock in a name." />
 
   <!-- Privacy-safe analytics (Plausible-style) -->
   <script defer data-domain="domainelevation.com" src="https://plausible.io/js/script.js"></script>
@@ -258,19 +260,22 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO (reframed: diagnostic + inevitability, not advisory) -->
     <section>
-      <h1>Naming clarity for high-stakes launches.</h1>
+      <h1>Naming decisions compound. Domains lock them in.</h1>
       <p>
-        Private naming review for founders and teams navigating identity, category positioning,
-        and long-term brand constraints.
+        A diagnostic for founders navigating naming risk, category positioning, and domain constraints.
+        Understand availability and defensibility before you commit.
+      </p>
+      <p class="note">
+        This page is not crowdsourced brainstorming. It is a lens on structural risk.
       </p>
       <div class="cta-row">
-        <a class="cta-btn" href="#request">Request a Private Review</a>
+        <a class="cta-btn" href="#diagnostic">Assess naming risk</a>
       </div>
     </section>
 
-    <!-- DIAGNOSTIC PREFACE -->
+    <!-- CONTEXT -->
     <section>
       <h2>Context</h2>
       <p>Most naming problems do not announce themselves early.</p>
@@ -279,26 +284,26 @@
         or forced rebrands after traction.
       </p>
       <p class="note">
-        If you are here, you are likely sensing friction before it becomes visible. That is the right moment to act.
+        If you are here, you are likely sensing friction before it becomes visible.
       </p>
     </section>
 
-    <!-- WHO THIS IS FOR -->
+    <!-- WHO THIS IS FOR (kept, tightened) -->
     <section>
       <h2>Who this is for</h2>
-      <p>This review is typically requested by teams who are:</p>
+      <p>This diagnostic is most relevant if you are:</p>
       <ul class="bullets">
         <li>Launching a new company, protocol, or product</li>
         <li>Renaming after traction, legal risk, or strategic drift</li>
-        <li>Evaluating or acquiring a premium domain</li>
+        <li>Evaluating a premium domain or defensible naming position</li>
         <li>Making a category-defining naming decision</li>
       </ul>
       <p class="note" style="margin-top:12px;">
-        If none of the above apply, this page is not for you.
+        If none of the above apply, you likely do not need this page.
       </p>
     </section>
 
-    <!-- COMMON FAILURE MODES -->
+    <!-- COMMON FAILURE MODES (kept) -->
     <section>
       <h2>Common failure modes</h2>
       <p>Most names fail for structural reasons, not taste.</p>
@@ -316,13 +321,13 @@
       </p>
     </section>
 
-    <!-- DIAGNOSTIC -->
-    <section>
+    <!-- DIAGNOSTIC (kept) -->
+    <section id="diagnostic">
       <h2>Diagnostic</h2>
       <p class="note">A brief self-assessment to surface friction early.</p>
 
       <div class="block">
-        <div class="diag" id="diagnostic">
+        <div class="diag">
           <div class="q"><label><input type="checkbox" class="diag-check" />Would an enterprise customer take your domain seriously?</label></div>
           <div class="q"><label><input type="checkbox" class="diag-check" />Would a regulator or compliance team view it as credible?</label></div>
           <div class="q"><label><input type="checkbox" class="diag-check" />Is your name easily confused with another company?</label></div>
@@ -338,37 +343,63 @@
         <div class="score" id="scoreText">
           <strong>Score:</strong> 0 / 10
           <div class="note" id="scoreInterpretation" style="margin-top:8px;">
-            Low naming risk.
+            Low structural risk.
           </div>
+        </div>
+
+        <!-- NEW: outcome framing (converts to constraint thinking) -->
+        <div class="block">
+          <h2 style="margin-bottom:12px;">What this score usually implies</h2>
+          <p class="note" id="scoreBandNote">
+            Most teams with low structural risk proceed without intervention.
+          </p>
+          <p class="note">
+            The remaining constraint is often simple: whether the domain you want is actually available.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- THE REVIEW -->
+    <!-- NEW: THE THREE PATHS (domain-first framing) -->
     <section>
-      <h2>The review</h2>
+      <h2>Reality framing</h2>
       <p>
-        A focused, confidential review designed to surface structural naming risk, category misalignment,
-        domain reality, and strategic alternatives (including restraint).
+        Most teams in naming ambiguity eventually converge on one of three paths:
       </p>
-      <p class="note">
-        We may recommend proceeding as-is, adjusting direction, acquiring a specific asset, or not acting at all.
-        We do not force outcomes. We prioritize clarity.
+      <ul class="bullets">
+        <li><strong>Proceed with a compromised position</strong> — fast now, expensive later.</li>
+        <li><strong>Rename early</strong> — higher pain upfront, higher clarity long-term.</li>
+        <li><strong>Secure a defensible position</strong> — rare, expensive, and often constrained by availability.</li>
+      </ul>
+      <p class="note" style="margin-top:12px;">
+        The third path is not about preference. It is about constraint.
       </p>
     </section>
 
-    <!-- REQUEST FORM -->
-    <section id="request">
-      <h2>Request a Private Naming Review</h2>
+    <!-- NEW: ON DEFENSIBLE POSITIONS (subtle AssetsNow routing without naming it) -->
+    <section>
+      <h2>On defensible positions</h2>
+      <p>
+        Category-defining domains are often held long-term. Some sit inside private portfolios.
+        A small number change hands quietly.
+      </p>
       <p class="note">
-        Share brief context below. We respond within 24–48 hours. If we are not the right fit, we will tell you.
+        Understanding what is actually available is often the hardest part of naming.
+      </p>
+    </section>
+
+    <!-- REQUEST FORM (reframed: availability + constraints, shorter, less inviting) -->
+    <section id="request">
+      <h2>Discuss availability & constraints</h2>
+      <p class="note">
+        If availability is the constraint, share brief context below.
+        We cannot respond to general brainstorming requests.
       </p>
 
-      <!-- FORMSPREE (works on any static host) -->
-      <!-- 1) Create a Formspree form and replace YOUR_FORMSPREE_ID below -->
+      <!-- FORMSPREE -->
+      <!-- Replace YOUR_FORMSPREE_ID -->
       <form id="namingForm" method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_ID">
-        <!-- Formspree options -->
-        <input type="hidden" name="_subject" value="New Naming Review Request — DomainElevation" />
+        <input type="hidden" name="_subject" value="Availability & Constraints Inquiry — DomainElevation" />
         <input type="hidden" name="_redirect" value="https://domainelevation.com/naming/thanks/" />
 
         <!-- Honeypot -->
@@ -390,16 +421,6 @@
         </div>
 
         <div class="row">
-          <label class="formlabel" for="stage">Stage</label>
-          <select id="stage" name="stage" required>
-            <option value="">Select one</option>
-            <option value="idea-prelaunch">Idea / Pre-launch</option>
-            <option value="live-inmarket">Live / In-market</option>
-            <option value="renaming">Renaming</option>
-          </select>
-        </div>
-
-        <div class="row">
           <label class="formlabel" for="category">Category (one sentence)</label>
           <input type="text" id="category" name="category" required />
         </div>
@@ -407,11 +428,6 @@
         <div class="row">
           <label class="formlabel" for="current">Current name + domain (if applicable)</label>
           <input type="text" id="current" name="current" autocomplete="url" />
-        </div>
-
-        <div class="row">
-          <label class="formlabel" for="risk">What feels unclear or at risk right now?</label>
-          <textarea id="risk" name="risk" required></textarea>
         </div>
 
         <div class="row">
@@ -425,41 +441,31 @@
         </div>
 
         <div class="row">
-          <label class="formlabel" for="budget">Budget comfort (optional)</label>
-          <select id="budget" name="budget">
-            <option value="">Prefer not to say</option>
-            <option value="<5k">&lt;$5k</option>
-            <option value="5k-15k">$5k–$15k</option>
-            <option value="15k+">$15k+</option>
-          </select>
+          <label class="formlabel" for="prompt">What prompted this inquiry? (optional)</label>
+          <textarea id="prompt" name="prompt" placeholder="Availability constraint, legal friction, investor optics, domain defensibility, etc."></textarea>
         </div>
 
-        <button class="btn" type="submit">Submit Request</button>
+        <button class="btn" type="submit">Continue</button>
 
         <div class="fineprint">
-          If we’re not the right fit, we’ll tell you. No pressure. No public inventory.
+          No public inventory. No newsletters. No obligation. If it’s not a fit, we’ll be direct.
         </div>
 
         <div class="email-fallback">
-          Prefer email? <a href="mailto:naming@domainelevation.com?subject=Private%20Naming%20Review%20Request&body=Company%20%2F%20Product%3A%0AStage%3A%0ACategory%3A%0ACurrent%20name%20%2B%20domain%3A%0AWhat%20feels%20unclear%20or%20risky%3A%0ATimeline%3A%0ABudget%20comfort%20(optional)%3A">naming@domainelevation.com</a>
+          Prefer email? <a href="mailto:hello@domainelevation.com?subject=Availability%20%26%20Constraints&body=Company%20%2F%20Product%3A%0ACategory%3A%0ACurrent%20name%20%2B%20domain%3A%0ATimeline%3A%0AConstraint%3A">hello@domainelevation.com</a>
         </div>
 
         <div class="status" id="formStatus" aria-live="polite"></div>
       </form>
-
-      <div class="note" style="margin-top:18px;">
-        This is not crowdsourced brainstorming. This is not logo or marketing work. This is not a guarantee of asset availability.
-        All discussions are confidential.
-      </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-inner">
       <p>
-        DomainElevation also offers private naming advisory for founders and teams navigating complex naming decisions.
+        DomainElevation stewards digital naming assets and studies structural naming risk across emerging categories.
       </p>
-      <a href="/naming">Naming Advisory</a>
+      <a href="/contact">Contact</a>
     </div>
   </footer>
 
@@ -468,6 +474,7 @@
     (function () {
       const checks = Array.from(document.querySelectorAll(".diag-check"));
       const scoreText = document.getElementById("scoreText");
+      const scoreBandNote = document.getElementById("scoreBandNote");
 
       function render() {
         const score = checks.filter(c => c.checked).length;
@@ -478,11 +485,14 @@
         const interpEl = document.getElementById("scoreInterpretation");
 
         if (score <= 3) {
-          interpEl.textContent = "Low naming risk.";
+          interpEl.textContent = "Low structural risk.";
+          scoreBandNote.textContent = "Most teams with low structural risk proceed without intervention. Availability is often the only remaining constraint.";
         } else if (score <= 6) {
-          interpEl.textContent = "Moderate naming friction. A private review may clarify tradeoffs.";
+          interpEl.textContent = "Moderate friction.";
+          scoreBandNote.textContent = "Moderate friction. Many teams compensate with modifiers or marketing spend. A defensible domain position can remove a surprising amount of drag.";
         } else {
-          interpEl.textContent = "High naming risk. Naming is likely slowing credibility or scale.";
+          interpEl.textContent = "High structural risk.";
+          scoreBandNote.textContent = "High structural risk. Most teams eventually revisit naming or domain strategy after traction. Resolving constraints earlier is usually cheaper.";
         }
       }
 
