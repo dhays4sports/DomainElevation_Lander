@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Naming Advisory — DomainElevation</title>
-  <meta name="description" content="Private naming advisory for founders and teams navigating complex naming decisions." />
+  <meta name="description" content="Private naming review for founders and teams navigating complex naming decisions." />
 
   <!-- Privacy-safe analytics (Plausible-style) -->
   <script defer data-domain="domainelevation.com" src="https://plausible.io/js/script.js"></script>
@@ -20,6 +20,8 @@
       --font-serif: "Georgia", "Times New Roman", serif;
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --field-bg: #fafafa;
+      --btn-bg: #111111;
+      --btn-text: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -64,7 +66,7 @@
       font-family: var(--font-serif);
       font-size: 2.2rem;
       font-weight: 400;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     h2 {
@@ -85,6 +87,7 @@
     .note {
       color: var(--text-muted);
       font-size: 0.95rem;
+      max-width: 740px;
     }
 
     .block {
@@ -93,10 +96,40 @@
       margin-top: 18px;
     }
 
+    .bullets {
+      max-width: 740px;
+      margin-top: 10px;
+      color: var(--text-secondary);
+    }
+
+    .bullets li {
+      margin-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    .cta-row {
+      margin-top: 18px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      border: 1px solid var(--btn-bg);
+    }
+    .cta-btn:hover {
+      border-bottom: none;
+      opacity: 0.92;
+    }
+
+    /* Diagnostic */
     .diag {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 10px;
       margin-top: 10px;
     }
 
@@ -116,12 +149,13 @@
     .q input { margin-top: 4px; }
 
     .score {
-      margin-top: 16px;
+      margin-top: 14px;
       color: var(--text-secondary);
     }
 
     .score strong { color: var(--text-primary); }
 
+    /* Form */
     form {
       margin-top: 16px;
       display: grid;
@@ -129,10 +163,7 @@
       max-width: 740px;
     }
 
-    .row {
-      display: grid;
-      gap: 6px;
-    }
+    .row { display: grid; gap: 6px; }
 
     label.formlabel {
       font-size: 0.92rem;
@@ -146,22 +177,36 @@
       background: var(--field-bg);
       font-size: 1rem;
       color: var(--text-primary);
-      border-radius: 6px;
+      border-radius: 8px;
       outline: none;
     }
 
-    textarea { min-height: 110px; resize: vertical; }
+    textarea { min-height: 120px; resize: vertical; }
 
-    .submit-wrap {
-      padding-top: 8px;
-      color: var(--text-muted);
+    .btn {
+      justify-self: start;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: 1px solid var(--btn-bg);
+      padding: 10px 14px;
+      border-radius: 8px;
       font-size: 0.95rem;
+      cursor: pointer;
     }
 
-    /* Intentionally NOT a button (per your doctrine) */
-    .mailto {
-      display: inline-block;
+    .btn:hover { opacity: 0.92; }
+
+    .fineprint {
       margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 740px;
+    }
+
+    .email-fallback {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
     }
 
     footer {
@@ -210,26 +255,76 @@
   </header>
 
   <main>
+    <!-- HERO -->
     <section>
-      <h1>Naming Advisory</h1>
+      <h1>Naming clarity for high-stakes launches.</h1>
       <p>
-        Naming becomes difficult when credibility, compliance, or scale is at stake.
-        DomainElevation offers private naming advisory for founders and teams navigating complex naming decisions.
+        Private naming review for founders and teams navigating identity, category positioning,
+        and long-term brand constraints.
+      </p>
+
+      <div class="cta-row">
+        <a class="cta-btn" href="#request">Request a Private Review</a>
+      </div>
+    </section>
+
+    <!-- DIAGNOSTIC PREFACE -->
+    <section>
+      <h2>Context</h2>
+      <p>
+        Most naming problems do not announce themselves early.
+      </p>
+      <p>
+        They surface later as legal friction, investor skepticism, domain regret, brand dilution,
+        or forced rebrands after traction.
       </p>
       <p class="note">
-        We begin with context — not inventory.
+        If you are here, you are likely sensing friction before it becomes visible. That is the right moment to act.
       </p>
     </section>
 
+    <!-- WHO THIS IS FOR -->
+    <section>
+      <h2>Who this is for</h2>
+      <p>This review is typically requested by teams who are:</p>
+      <ul class="bullets">
+        <li>Launching a new company, protocol, or product</li>
+        <li>Renaming after traction, legal risk, or strategic drift</li>
+        <li>Evaluating or acquiring a premium domain</li>
+        <li>Making a category-defining naming decision</li>
+      </ul>
+      <p class="note" style="margin-top:12px;">
+        If none of the above apply, this page is not for you.
+      </p>
+    </section>
+
+    <!-- COMMON FAILURE MODES -->
+    <section>
+      <h2>Common failure modes</h2>
+      <p>Most names fail for structural reasons, not taste.</p>
+      <ul class="bullets">
+        <li>The name requires explanation</li>
+        <li>Trademark or namespace risk was underestimated</li>
+        <li>The domain is compromised or indefensible</li>
+        <li>The name does not match the category’s language</li>
+        <li>The name will not scale with future products</li>
+        <li>International, pronunciation, or abbreviation issues</li>
+        <li>Investor optics do not match business reality</li>
+      </ul>
+      <p class="note" style="margin-top:12px;">
+        These issues compound. Early clarity prevents late cost.
+      </p>
+    </section>
+
+    <!-- DIAGNOSTIC -->
     <section>
       <h2>Diagnostic</h2>
-      <p>
-        Answer the questions below. This is a self-assessment designed to surface naming friction early.
+      <p class="note">
+        A brief self-assessment to surface friction early.
       </p>
 
       <div class="block">
         <div class="diag" id="diagnostic">
-          <!-- 10 questions -->
           <div class="q"><label><input type="checkbox" class="diag-check" />Would an enterprise customer take your domain seriously?</label></div>
           <div class="q"><label><input type="checkbox" class="diag-check" />Would a regulator or compliance team view it as credible?</label></div>
           <div class="q"><label><input type="checkbox" class="diag-check" />Is your name easily confused with another company?</label></div>
@@ -251,66 +346,116 @@
       </div>
     </section>
 
+    <!-- THE REVIEW -->
     <section>
-      <h2>Request a Private Naming Review</h2>
+      <h2>The review</h2>
       <p>
-        If you’re unsure how to proceed, share a small amount of context and we’ll review privately.
+        A focused, confidential review designed to surface structural naming risk, category misalignment,
+        domain reality, and strategic alternatives (including restraint).
+      </p>
+      <p class="note">
+        We may recommend proceeding as-is, adjusting direction, acquiring a specific asset, or not acting at all.
+        We do not force outcomes. We prioritize clarity.
+      </p>
+    </section>
+
+    <!-- REQUEST FORM -->
+    <section id="request">
+      <h2>Request a Private Naming Review</h2>
+      <p class="note">
+        Share brief context below. We respond within 24–48 hours. If we are not the right fit, we will tell you.
       </p>
 
-      <!--
-        NOTE:
-        This form is intentionally “static”. Wire it to your backend or form service later.
-        For now, it can also be handled via mailto routing.
-      -->
-      <form id="namingForm">
+      <!-- NETLIFY FORMS VERSION -->
+      <!-- Works on Netlify as-is. If you're not on Netlify, tell me your host and I'll swap to Formspree/custom. -->
+      <form
+        name="naming-review"
+        method="POST"
+        action="/naming/thanks/"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <!-- Required by Netlify -->
+        <input type="hidden" name="form-name" value="naming-review" />
+        <!-- Honeypot -->
+        <p style="display:none;">
+          <label>Don’t fill this out: <input name="bot-field" /></label>
+        </p>
+
         <div class="row">
-          <label class="formlabel" for="project">Project or company name (or working name)</label>
-          <input type="text" id="project" name="project" autocomplete="organization" />
+          <label class="formlabel" for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required />
         </div>
 
         <div class="row">
-          <label class="formlabel" for="building">What are you building? (1–2 sentences)</label>
-          <textarea id="building" name="building"></textarea>
+          <label class="formlabel" for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required />
         </div>
 
         <div class="row">
-          <label class="formlabel" for="domain">Current domain (if any)</label>
-          <input type="text" id="domain" name="domain" autocomplete="url" />
+          <label class="formlabel" for="company">Company / Product</label>
+          <input type="text" id="company" name="company" autocomplete="organization" required />
         </div>
 
         <div class="row">
-          <label class="formlabel" for="concern">Primary concern</label>
-          <select id="concern" name="concern">
+          <label class="formlabel" for="stage">Stage</label>
+          <select id="stage" name="stage" required>
             <option value="">Select one</option>
-            <option value="credibility">Credibility</option>
-            <option value="trademarks">Trademarks</option>
-            <option value="compliance">Compliance</option>
-            <option value="memorability">Memorability</option>
-            <option value="availability">Availability</option>
+            <option value="idea-prelaunch">Idea / Pre-launch</option>
+            <option value="live-inmarket">Live / In-market</option>
+            <option value="renaming">Renaming</option>
           </select>
+        </div>
+
+        <div class="row">
+          <label class="formlabel" for="category">Category (one sentence)</label>
+          <input type="text" id="category" name="category" required />
+        </div>
+
+        <div class="row">
+          <label class="formlabel" for="current">Current name + domain (if applicable)</label>
+          <input type="text" id="current" name="current" autocomplete="url" />
+        </div>
+
+        <div class="row">
+          <label class="formlabel" for="risk">What feels unclear or at risk right now?</label>
+          <textarea id="risk" name="risk" required></textarea>
         </div>
 
         <div class="row">
           <label class="formlabel" for="timeline">Timeline</label>
-          <select id="timeline" name="timeline">
+          <select id="timeline" name="timeline" required>
             <option value="">Select one</option>
-            <option value="researching">Researching</option>
-            <option value="launching-soon">Launching soon</option>
-            <option value="rebranding">Rebranding</option>
-            <option value="urgent">Urgent</option>
+            <option value="immediate">Immediate</option>
+            <option value="30-60">Next 30–60 days</option>
+            <option value="exploratory">Exploratory</option>
           </select>
         </div>
 
-        <div class="submit-wrap">
-          <div class="note">
-            To request a review, email:
-            <span class="mailto"><a href="mailto:hello@domainelevation.com">hello@domainelevation.com</a></span>
-          </div>
-          <div class="note" style="margin-top:10px;">
-            If you prefer, you can copy your responses above and include them in the email.
-          </div>
+        <div class="row">
+          <label class="formlabel" for="budget">Budget comfort (optional)</label>
+          <select id="budget" name="budget">
+            <option value="">Prefer not to say</option>
+            <option value="<5k">&lt;$5k</option>
+            <option value="5k-15k">$5k–$15k</option>
+            <option value="15k+">$15k+</option>
+          </select>
+        </div>
+
+        <button class="btn" type="submit">Submit Request</button>
+        <div class="fineprint">
+          If we’re not the right fit, we’ll tell you. No pressure. No public inventory.
+        </div>
+
+        <div class="email-fallback">
+          Prefer email? <a href="mailto:naming@domainelevation.com?subject=Private%20Naming%20Review%20Request&body=Company%20%2F%20Product%3A%0AStage%3A%0ACategory%3A%0ACurrent%20name%20%2B%20domain%3A%0AWhat%20feels%20unclear%20or%20risky%3A%0ATimeline%3A%0ABudget%20comfort%20(optional)%3A">naming@domainelevation.com</a>
         </div>
       </form>
+
+      <div class="note" style="margin-top:18px;">
+        This is not crowdsourced brainstorming. This is not logo or marketing work. This is not a guarantee of asset availability.
+        All discussions are confidential.
+      </div>
     </section>
   </main>
 
@@ -328,13 +473,10 @@
     (function () {
       const checks = Array.from(document.querySelectorAll(".diag-check"));
       const scoreText = document.getElementById("scoreText");
-      const interpretation = document.getElementById("scoreInterpretation");
 
       function render() {
         const score = checks.filter(c => c.checked).length;
 
-        // Update score
-        scoreText.firstChild.textContent = "";
         scoreText.innerHTML = '<strong>Score:</strong> ' + score + ' / 10' +
           '<div class="note" id="scoreInterpretation" style="margin-top:8px;"></div>';
 
