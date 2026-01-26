@@ -107,9 +107,7 @@
       margin-bottom: 8px;
     }
 
-    .cta-row {
-      margin-top: 18px;
-    }
+    .cta-row { margin-top: 18px; }
 
     .cta-btn {
       display: inline-block;
@@ -120,10 +118,7 @@
       font-size: 0.95rem;
       border: 1px solid var(--btn-bg);
     }
-    .cta-btn:hover {
-      border-bottom: none;
-      opacity: 0.92;
-    }
+    .cta-btn:hover { border-bottom: none; opacity: 0.92; }
 
     /* Diagnostic */
     .diag {
@@ -209,6 +204,14 @@
       color: var(--text-muted);
     }
 
+    /* Form status */
+    .status {
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 740px;
+    }
+
     footer {
       border-top: 1px solid var(--border-light);
       padding: 40px 20px;
@@ -262,7 +265,6 @@
         Private naming review for founders and teams navigating identity, category positioning,
         and long-term brand constraints.
       </p>
-
       <div class="cta-row">
         <a class="cta-btn" href="#request">Request a Private Review</a>
       </div>
@@ -271,9 +273,7 @@
     <!-- DIAGNOSTIC PREFACE -->
     <section>
       <h2>Context</h2>
-      <p>
-        Most naming problems do not announce themselves early.
-      </p>
+      <p>Most naming problems do not announce themselves early.</p>
       <p>
         They surface later as legal friction, investor skepticism, domain regret, brand dilution,
         or forced rebrands after traction.
@@ -319,9 +319,7 @@
     <!-- DIAGNOSTIC -->
     <section>
       <h2>Diagnostic</h2>
-      <p class="note">
-        A brief self-assessment to surface friction early.
-      </p>
+      <p class="note">A brief self-assessment to surface friction early.</p>
 
       <div class="block">
         <div class="diag" id="diagnostic">
@@ -366,21 +364,15 @@
         Share brief context below. We respond within 24–48 hours. If we are not the right fit, we will tell you.
       </p>
 
-      <!-- NETLIFY FORMS VERSION -->
-      <!-- Works on Netlify as-is. If you're not on Netlify, tell me your host and I'll swap to Formspree/custom. -->
-      <form
-        name="naming-review"
-        method="POST"
-        action="/naming/thanks/"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-      >
-        <!-- Required by Netlify -->
-        <input type="hidden" name="form-name" value="naming-review" />
+      <!-- FORMSPREE (works on any static host) -->
+      <!-- 1) Create a Formspree form and replace YOUR_FORMSPREE_ID below -->
+      <form id="namingForm" method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_ID">
+        <!-- Formspree options -->
+        <input type="hidden" name="_subject" value="New Naming Review Request — DomainElevation" />
+        <input type="hidden" name="_redirect" value="https://domainelevation.com/naming/thanks/" />
+
         <!-- Honeypot -->
-        <p style="display:none;">
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
         <div class="row">
           <label class="formlabel" for="name">Name</label>
@@ -443,6 +435,7 @@
         </div>
 
         <button class="btn" type="submit">Submit Request</button>
+
         <div class="fineprint">
           If we’re not the right fit, we’ll tell you. No pressure. No public inventory.
         </div>
@@ -450,6 +443,8 @@
         <div class="email-fallback">
           Prefer email? <a href="mailto:naming@domainelevation.com?subject=Private%20Naming%20Review%20Request&body=Company%20%2F%20Product%3A%0AStage%3A%0ACategory%3A%0ACurrent%20name%20%2B%20domain%3A%0AWhat%20feels%20unclear%20or%20risky%3A%0ATimeline%3A%0ABudget%20comfort%20(optional)%3A">naming@domainelevation.com</a>
         </div>
+
+        <div class="status" id="formStatus" aria-live="polite"></div>
       </form>
 
       <div class="note" style="margin-top:18px;">
