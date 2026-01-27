@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — DomainElevation</title>
+  <meta name="description" content="Research and notes on naming risk, category domains, and digital identity infrastructure." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/research/" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Research — DomainElevation" />
+  <meta property="og:description" content="Research and notes on naming risk, category domains, and digital identity infrastructure." />
+  <meta property="og:url" content="https://domainelevation.com/research/" />
+  <meta property="og:image" content="https://domainelevation.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --bg:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#121212;
+      --text-secondary:rgba(18,18,18,.78);
+      --text-muted:rgba(18,18,18,.58);
+      --border:rgba(18,18,18,.10);
+      --border-strong:rgba(18,18,18,.16);
+      --accent:#7a4cff;
+      --max-width:960px;
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.06);
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background: radial-gradient(transparent 1px, rgba(0,0,0,.02) 1px);
+      background-size: 7px 7px;
+      opacity:.25;
+      mix-blend-mode:multiply;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    a:hover{ border-bottom-color:rgba(18,18,18,.40); }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+
+    nav{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+    .brand-mark{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width:0;
+    }
+
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+      position:relative;
+    }
+    nav ul a:hover{
+      color:var(--ink);
+      border-bottom-color:rgba(18,18,18,.40);
+    }
+
+    /* Active nav state (use aria-current="page") */
+    nav ul a[aria-current="page"]{
+      color:var(--ink);
+    }
+    nav ul a[aria-current="page"]::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-10px;
+      height:2px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 55%, var(--ink));
+      opacity:.55;
+    }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:56px 22px 88px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero{
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:42px 34px;
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(2.05rem, 4.2vw, 3.15rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.14;
+      margin-bottom:14px;
+      max-width: 26ch;
+    }
+
+    .lede{
+      max-width: 78ch;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 16px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.82rem;
+      color: var(--text-muted);
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+    }
+    .dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    section{ margin-top: 34px; }
+
+    .section-card{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:30px 34px;
+    }
+
+    h2{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+      margin-top: 12px;
+    }
+
+    .post-card{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:16px 16px 14px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--paper) 92%, transparent),
+        color-mix(in srgb, var(--paper) 78%, transparent)
+      );
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .post-card:hover{
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+    }
+
+    .post-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .post-title{
+      font-weight:650;
+      color: var(--ink);
+      line-height:1.25;
+    }
+
+    .post-meta{
+      font-size:.78rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      white-space:nowrap;
+      margin-top:2px;
+    }
+
+    p{
+      max-width: 78ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    .post-card p{ margin:0; font-size:.98rem; }
+
+    .footer-note{
+      margin-top: 14px;
+      color: var(--text-muted);
+      font-size: .95rem;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative;
+      z-index:1;
+    }
+
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer p{
+      font-size:.92rem;
+      color: var(--text-muted);
+      margin:0;
+      max-width: 78ch;
+    }
+
+    .footer-link{
+      font-size:.92rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 760px){
+      nav{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+      nav ul{
+        justify-content:flex-start;
+        width:100%;
+        gap:16px;
+      }
+      .hero{ padding:34px 18px; }
+      .section-card{ padding:26px 18px; }
+      .grid{ grid-template-columns: 1fr; }
+      main{ padding:44px 18px 72px; }
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0e0f12;
+        --paper:#12141a;
+        --ink:#f4f5f7;
+        --text-secondary:rgba(244,245,247,.78);
+        --text-muted:rgba(244,245,247,.56);
+        --border:rgba(244,245,247,.10);
+        --border-strong:rgba(244,245,247,.16);
+        --shadow: 0 18px 50px rgba(0,0,0,.40);
+      }
+
+      body::before{
+        opacity:.12;
+        mix-blend-mode: normal;
+        background: radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+        background-size: 7px 7px;
+      }
+
+      a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a[aria-current="page"]::after{
+        background: color-mix(in srgb, var(--accent) 70%, var(--ink));
+        opacity:.55;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolios">Portfolios</a></li>
+        <li><a href="/philosophy">Philosophy</a></li>
+        <li><a href="/research" aria-current="page">Research</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Research hero">
+      <h1>Research &amp; Notes</h1>
+      <p class="lede">
+        Writing on naming risk, category-defining domains, and the constraints that shape durable digital identity.
+      </p>
+
+      <div class="hero-meta" aria-label="Research badges">
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Evergreen analysis</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Executive framing</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Practical constraints</span>
+      </div>
+    </section>
+
+    <section class="section-card" aria-label="Research listing">
+      <h2>Recent</h2>
+
+      <div class="grid">
+        <!-- Post 1 -->
+        <a class="post-card" href="/research/naming-risk-domain-reality.html" aria-label="Open: Naming Risk & Domain Reality">
+          <div class="post-top">
+            <div class="post-title">Naming Risk &amp; Domain Reality</div>
+            <div class="post-meta">Core</div>
+          </div>
+          <p>
+            A practical framework for evaluating category names: scarcity, constraints, and why “obvious” domains behave like infrastructure.
+          </p>
+          <div class="footer-note">Read →</div>
+        </a>
+
+        <!-- Placeholder Post 2 -->
+        <a class="post-card" href="#" aria-label="Coming soon: Why Category Domains Compete With Brands">
+          <div class="post-top">
+            <div class="post-title">Why Category Domains Compete With Brands</div>
+            <div class="post-meta">Soon</div>
+          </div>
+          <p>
+            How category ownership changes acquisition logic, distribution, and defensibility.
+          </p>
+          <div class="footer-note">Coming soon</div>
+        </a>
+
+        <!-- Placeholder Post 3 -->
+        <a class="post-card" href="#" aria-label="Coming soon: The 'Obvious Name' Moat">
+          <div class="post-top">
+            <div class="post-title">The “Obvious Name” Moat</div>
+            <div class="post-meta">Soon</div>
+          </div>
+          <p>
+            Why the most intuitive name wins compounding mindshare over time.
+          </p>
+          <div class="footer-note">Coming soon</div>
+        </a>
+
+        <!-- Placeholder Post 4 -->
+        <a class="post-card" href="#" aria-label="Coming soon: How Executives Justify a Domain Acquisition">
+          <div class="post-top">
+            <div class="post-title">How Executives Justify a Domain Acquisition</div>
+            <div class="post-meta">Soon</div>
+          </div>
+          <p>
+            The internal memo logic: risk, alignment, and why domains are often purchased “for inevitability.”
+          </p>
+          <div class="footer-note">Coming soon</div>
+        </a>
+      </div>
+
+      <div class="divider" role="separator" aria-hidden="true"></div>
+
+      <p class="footer-note">
+        If you’re a qualified counterparty and want a private discussion, email
+        <a href="mailto:hello@domainelevation.com">hello@domainelevation.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>
+        DomainElevation studies structural naming risk and domain constraints across emerging categories.
+      </p>
+      <a class="footer-link" href="/naming">Naming Risk &amp; Domain Reality</a>
+    </div>
+  </footer>
+</body>
+</html>
