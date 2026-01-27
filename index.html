@@ -5,291 +5,496 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DomainElevation</title>
   <meta name="description" content="DomainElevation is a private digital asset holding and curation firm focused on category-relevant domains across infrastructure, identity, and emerging digital markets." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/" />
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DomainElevation" />
+  <meta property="og:description" content="A private digital asset holding and curation firm. Naming as infrastructure." />
+  <meta property="og:url" content="https://domainelevation.com/" />
+  <meta property="og:image" content="https://domainelevation.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <style>
-  :root{
-    --bg:#ffffff;
-    --text-primary:#111111;
-    --text-secondary:#444444;
-    --text-muted:#777777;
-    --border-light:#e5e5e5;
-    --max-width:900px;
-    --font-serif:"Georgia","Times New Roman",serif;
-    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
+    :root{
+      /* Distinct from AssetsNow: warm paper + editorial accent */
+      --bg:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#121212;
 
-  *{ box-sizing:border-box; margin:0; padding:0; }
+      --text-secondary:rgba(18,18,18,.78);
+      --text-muted:rgba(18,18,18,.58);
 
-  body{
-    background:var(--bg);
-    color:var(--text-primary);
-    font-family:var(--font-sans);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    text-rendering:optimizeLegibility;
-  }
+      --border:rgba(18,18,18,.10);
+      --border-strong:rgba(18,18,18,.16);
 
-  a{
-    color:var(--text-primary);
-    text-decoration:none;
-    border-bottom:1px solid transparent;
-  }
-  a:hover{ border-bottom-color:var(--text-primary); }
+      --accent:#7a4cff; /* subtle editorial violet (change if you want) */
 
-  header{
-    border-bottom:1px solid var(--border-light);
-    background:var(--bg);
-  }
+      --max-width:960px;
 
-  nav{
-    max-width:var(--max-width);
-    margin:0 auto;
-    padding:22px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
-  }
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  /* Brand */
-  nav .brand{
-    font-weight:500;
-    letter-spacing:0.02em;
-    white-space:nowrap;
-    flex:0 0 auto;
-  }
-  nav .brand a{ border-bottom:1px solid transparent; }
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.06);
+    }
 
-  /* Links */
-  nav ul{
-    list-style:none;
-    display:flex;
-    align-items:center;
-    gap:26px;
-    margin:0;
-    padding:0;
-    flex:1 1 auto;
-    justify-content:flex-end;
-    min-width:0;
-  }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
 
-  nav ul a{
-    font-size:0.95rem;
-    letter-spacing:0.01em;
-    padding:8px 0;              /* bigger tap target */
-    color:var(--text-secondary); /* quieter chrome */
-  }
-  nav ul a:hover{
-    color:var(--text-primary);
-    border-bottom-color:var(--text-primary);
-  }
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
 
-  /* Main */
-  main{
-    max-width:var(--max-width);
-    margin:0 auto;
-    padding:64px 20px 80px;     /* tighter top padding */
-  }
+    /* subtle grain */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(transparent 1px, rgba(0,0,0,.02) 1px);
+      background-size: 7px 7px;
+      opacity:.25;
+      mix-blend-mode:multiply;
+    }
 
-  section{ margin-bottom:80px; }
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    a:hover{
+      border-bottom-color:rgba(18,18,18,.40);
+    }
 
-  h1{
-    font-family:var(--font-serif);
-    font-size:2.4rem;
-    font-weight:400;
-    letter-spacing:-0.01em;
-    margin-bottom:24px;
-  }
+    /* Header / Nav */
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
+    }
 
-  h2{
-    font-size:0.85rem;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
-    color:var(--text-muted);
-    margin-bottom:20px;
-  }
-
-  p{
-    max-width:700px;
-    color:var(--text-secondary);
-    font-size:1rem;
-    margin-bottom:12px;
-  }
-  /* Prevent extra space after last paragraph in a block */
-  p:last-child{ margin-bottom:0; }
-
-  .portfolio{ margin-bottom:32px; }
-
-  .portfolio-title{
-    font-weight:500;
-    margin-bottom:6px;
-    color:var(--text-primary);
-  }
-
-  /* Footer */
-  footer{
-    border-top:1px solid var(--border-light);
-    padding:40px 20px;
-  }
-
-  footer .footer-inner{
-    max-width:var(--max-width);
-    margin:0 auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:16px;
-  }
-
-  footer p{
-    font-size:0.9rem;
-    color:var(--text-muted);
-    margin:0;
-  }
-
-  footer a{ font-size:0.9rem; }
-
-  /* Mobile */
-  @media (max-width:640px){
     nav{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:14px;
-      padding:18px 20px;
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+    .brand-mark{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
     }
 
     nav ul{
-      justify-content:flex-start;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:22px;
       flex-wrap:wrap;
-      gap:16px;
-      width:100%;
+      justify-content:flex-end;
+      min-width:0;
     }
 
-    h1{ font-size:2rem; }
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+    }
+    nav ul a:hover{
+      color:var(--ink);
+      border-bottom-color:rgba(18,18,18,.40);
+    }
 
-    main{ padding:56px 20px 70px; }
-  }
-</style>
+    /* Active nav state */
+nav ul a.active{
+  color: var(--ink);
+  border-bottom-color: rgba(18,18,18,.45);
+  font-weight: 500;
+}
+
+    /* Layout */
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:56px 22px 88px;
+      position:relative;
+      z-index:1; /* above grain */
+    }
+
+    .hero{
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:42px 34px;
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(2.05rem, 4.2vw, 3.15rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.14;
+      margin-bottom:18px;
+      max-width: 22ch;
+    }
+
+    .lede{
+      max-width: 76ch;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 16px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.82rem;
+      color: var(--text-muted);
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+    }
+
+    .dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    section{
+      margin-top: 34px;
+    }
+
+    .section-card{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:30px 34px;
+    }
+
+    h2{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    p{
+      max-width: 78ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    p:last-child{ margin-bottom:0; }
+
+    .divider{
+      height:1px;
+      background: var(--border);
+      margin: 22px 0;
+    }
+
+    /* Portfolios grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+      margin-top: 12px;
+    }
+
+    .item{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:16px 16px 14px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--paper) 92%, transparent),
+        color-mix(in srgb, var(--paper) 78%, transparent)
+      );
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .item:hover{
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+    }
+
+    .item-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight:600;
+      color: var(--ink);
+      margin-bottom:6px;
+    }
+
+    .item-title a{
+      border-bottom: 1px solid transparent;
+    }
+    .item-title a:hover{
+      border-bottom-color: rgba(18,18,18,.40);
+    }
+
+    .item-kicker{
+      font-size:.80rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Contact */
+    .contact a{
+      color: var(--ink);
+      border-bottom-color: rgba(18,18,18,.22);
+    }
+    .contact a:hover{
+      border-bottom-color: rgba(18,18,18,.45);
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative;
+      z-index:1;
+    }
+
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer p{
+      font-size:.92rem;
+      color: var(--text-muted);
+      margin:0;
+      max-width: 78ch;
+    }
+
+    .footer-link{
+      font-size:.92rem;
+      color: var(--text-secondary);
+    }
+
+    /* Mobile */
+    @media (max-width: 760px){
+      nav{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+      nav ul{
+        justify-content:flex-start;
+        width:100%;
+        gap:16px;
+      }
+      .hero{ padding:34px 18px; }
+      .section-card{ padding:26px 18px; }
+      .grid{ grid-template-columns: 1fr; }
+      main{ padding:44px 18px 72px; }
+    }
+
+    /* Dark mode (still editorial, not AssetsNow) */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0e0f12;
+        --paper:#12141a;
+        --ink:#f4f5f7;
+
+        --text-secondary:rgba(244,245,247,.78);
+        --text-muted:rgba(244,245,247,.56);
+
+        --border:rgba(244,245,247,.10);
+        --border-strong:rgba(244,245,247,.16);
+
+        --shadow: 0 18px 50px rgba(0,0,0,.40);
+      }
+
+      body::before{
+        opacity:.12;
+        mix-blend-mode: normal;
+        background:
+          radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+        background-size: 7px 7px;
+      }
+
+      a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+
+      nav ul a.active{
+  border-bottom-color: rgba(244,245,247,.45);
+}
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- Header / Navigation -->
   <header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="/">DomainElevation</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
 
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/portfolios">Portfolios</a></li>
-      <li><a href="/philosophy">Philosophy</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+      <ul class="nav-links">
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/portfolios">Portfolios</a></li>
+        <li><a href="/philosophy">Philosophy</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Main Content -->
   <main>
-
     <!-- HERO -->
-    <section>
+    <section class="hero" aria-label="Hero">
       <h1>We steward and elevate digital naming assets.</h1>
-      <p>
-        DomainElevation is a private digital asset holding and curation firm focused on
-        category-relevant domains across infrastructure, identity, and emerging digital markets.
+      <p class="lede">
+        DomainElevation is a private digital asset holding and curation firm focused on category-relevant domains
+        across infrastructure, identity, and emerging digital markets.
       </p>
+
+      <div class="hero-meta" aria-label="Positioning badges">
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Private holdings</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Long-horizon positioning</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Select placements</span>
+      </div>
     </section>
 
     <!-- WHAT WE DO -->
-    <section>
+    <section class="section-card" aria-label="What we do">
       <h2>What We Do</h2>
       <p>
-        We acquire, hold, and selectively place digital assets that function as long-term
-        infrastructure — not inventory.
+        We acquire, hold, and selectively place digital assets that function as long-term infrastructure — not inventory.
       </p>
-      <br />
+      <div class="divider" role="separator" aria-hidden="true"></div>
       <p>
-        Our portfolios reflect conviction in naming as leverage, and in the enduring value of
-        clear, authoritative digital identity.
+        Our portfolios reflect conviction in naming as leverage, and in the enduring value of clear, authoritative digital identity.
       </p>
     </section>
 
     <!-- PORTFOLIOS -->
-    <section>
+    <section class="section-card" aria-label="Portfolios">
       <h2>Portfolios</h2>
 
-      <div class="portfolio">
-        <div class="portfolio-title">
-          <a href="https://assetsnow.com" target="_blank" rel="noopener noreferrer">
-            AssetsNow
-          </a>
+      <div class="grid">
+        <div class="item">
+          <div class="item-title">
+            <a href="https://assetsnow.com" target="_blank" rel="noopener noreferrer">AssetsNow</a>
+            <span class="item-kicker">Flagship</span>
+          </div>
+          <p>
+            A discreet acquisition and representation surface for category-defining digital assets positioned at the
+            intersection of capital, infrastructure, and immediacy.
+          </p>
         </div>
-        <p>
-          A flagship collection of category-defining digital assets positioned at the intersection
-          of capital, infrastructure, and immediacy.
-        </p>
-      </div>
 
-      <div class="portfolio">
-        <div class="portfolio-title">Agent &amp; Command Interfaces</div>
-        <p>
-          Domain-native surfaces designed for interaction, orchestration, and automation.
-        </p>
-      </div>
+        <div class="item">
+          <div class="item-title">
+            <span>Agent &amp; Command Interfaces</span>
+            <span class="item-kicker">Surfaces</span>
+          </div>
+          <p>Domain-native interfaces designed for interaction, orchestration, and automation.</p>
+        </div>
 
-      <div class="portfolio">
-        <div class="portfolio-title">Infrastructure &amp; Identity</div>
-        <p>
-          Foundational naming primitives spanning payments, compliance, coordination, and trust.
-        </p>
-      </div>
+        <div class="item">
+          <div class="item-title">
+            <span>Infrastructure &amp; Identity</span>
+            <span class="item-kicker">Primitives</span>
+          </div>
+          <p>Foundational naming primitives spanning payments, compliance, coordination, and trust.</p>
+        </div>
 
-      <div class="portfolio">
-        <div class="portfolio-title">Experimental &amp; Narrative</div>
-        <p>
-          Asymmetric positions aligned with emerging behaviors and digital paradigms.
-        </p>
+        <div class="item">
+          <div class="item-title">
+            <span>Experimental &amp; Narrative</span>
+            <span class="item-kicker">R&amp;D</span>
+          </div>
+          <p>Asymmetric positions aligned with emerging behaviors and digital paradigms.</p>
+        </div>
       </div>
     </section>
 
     <!-- PHILOSOPHY -->
-    <section>
+    <section class="section-card" aria-label="Philosophy">
       <h2>Philosophy</h2>
       <p>
         We prioritize clarity over volume, conviction over velocity, and restraint over exposure.
       </p>
-      <br />
+      <div class="divider" role="separator" aria-hidden="true"></div>
       <p>
-        Most assets are held long-term.<br />
-        Select placements occur quietly and intentionally.
+        Most assets are held long-term. Select placements occur quietly and intentionally.
       </p>
     </section>
 
     <!-- CONTACT -->
-    <section>
+    <section class="section-card contact" aria-label="Contact">
       <h2>Contact</h2>
       <p>
         For inquiries or private discussions:<br />
         <a href="mailto:hello@domainelevation.com">hello@domainelevation.com</a>
       </p>
     </section>
-
   </main>
 
-  <!-- Footer -->
   <footer>
-  <div class="footer-inner">
-    <p>
-      DomainElevation studies structural naming risk and domain constraints across emerging categories.
-    </p>
-    <a href="/naming">Naming Risk &amp; Domain Reality</a>
-  </div>
-</footer>
+    <div class="footer-inner">
+      <p>
+        DomainElevation studies structural naming risk and domain constraints across emerging categories.
+      </p>
+      <a class="footer-link" href="/naming">Naming Risk &amp; Domain Reality</a>
+    </div>
+  </footer>
 </body>
 </html>
