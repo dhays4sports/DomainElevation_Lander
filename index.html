@@ -287,6 +287,25 @@ nav ul a.active{
       color: var(--text-muted);
     }
 
+    /* Subtle external link indicator */
+.external-link{
+  display:inline-flex;
+  align-items:baseline;
+  gap:6px;
+}
+
+.external-icon{
+  font-size:.78em;
+  opacity:.55;
+  transform: translateY(-1px);
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+.external-link:hover .external-icon{
+  opacity:.9;
+  transform: translateY(-2px);
+}
+    
     /* Research list */
 .research-list{
   display:grid;
