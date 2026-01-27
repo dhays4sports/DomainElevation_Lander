@@ -3,254 +3,245 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naming Risk &amp; Domain Reality — DomainElevation</title>
+  <meta name="description" content="A short note on naming constraints, domain scarcity, and why certain categories compound." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/naming" />
 
-  <!-- Reframed title + description (diagnostic + constraints, not service) -->
-  <title>Naming Risk & Domain Reality — DomainElevation</title>
-  <meta name="description" content="A diagnostic for founders navigating naming risk, category positioning, and domain constraints. Understand availability and defensibility before you lock in a name." />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <!-- Privacy-safe analytics (Plausible-style) -->
-  <script defer data-domain="domainelevation.com" src="https://plausible.io/js/script.js"></script>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Naming Risk & Domain Reality — DomainElevation" />
+  <meta property="og:description" content="Naming constraints, scarcity, and the structural reasons certain domains compound." />
+  <meta property="og:url" content="https://domainelevation.com/naming" />
+  <meta property="og:image" content="https://domainelevation.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <style>
-    :root {
-      --bg: #ffffff;
-      --text-primary: #111111;
-      --text-secondary: #444444;
-      --text-muted: #777777;
-      --border-light: #e5e5e5;
-      --max-width: 900px;
-      --font-serif: "Georgia", "Times New Roman", serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --field-bg: #fafafa;
-      --btn-bg: #111111;
-      --btn-text: #ffffff;
+    :root{
+      --bg:#0e0f12;
+      --paper:#12141a;
+      --ink:#f4f5f7;
+      --text-secondary:rgba(244,245,247,.78);
+      --text-muted:rgba(244,245,247,.56);
+      --border:rgba(244,245,247,.10);
+      --border-strong:rgba(244,245,247,.16);
+      --accent:#7a4cff;
+      --max-width:960px;
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.40);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
 
-    body {
-      background: var(--bg);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      line-height: 1.6;
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
     }
 
-    a {
-      color: var(--text-primary);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-    a:hover { border-bottom: 1px solid var(--text-primary); }
-
-    header { border-bottom: 1px solid var(--border-light); }
-
-    nav {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 24px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.12;
+      background: radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+      background-size: 7px 7px;
     }
 
-    nav .brand { font-weight: 500; letter-spacing: 0.02em; }
-    nav ul { list-style: none; display: flex; gap: 24px; }
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease;
+    }
+    a:hover{ border-bottom-color: rgba(244,245,247,.35); }
 
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 80px 20px;
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
     }
 
-    section { margin-bottom: 70px; }
-
-    h1 {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 400;
-      margin-bottom: 14px;
+    nav{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      position:relative; z-index:1;
     }
 
-    h2 {
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+    .brand-mark{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex; align-items:center;
+      gap:22px; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+      position:relative;
+    }
+    nav ul a:hover{ color:var(--ink); }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:44px 22px 88px;
+      position:relative; z-index:1;
+    }
+
+    .hero{
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:38px 34px;
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(1.9rem, 4.2vw, 2.75rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.14;
+      margin-bottom:14px;
+      max-width: 30ch;
+    }
+
+    .lede{
+      max-width: 80ch;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+    }
+
+    .section-card{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:30px 34px;
+      margin-top:16px;
+    }
+
+    h2{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
       color: var(--text-muted);
-      margin-bottom: 16px;
+      margin-bottom:14px;
     }
 
-    p {
-      max-width: 740px;
+    p{
+      max-width: 82ch;
       color: var(--text-secondary);
       font-size: 1rem;
       margin-bottom: 12px;
     }
+    p:last-child{ margin-bottom:0; }
 
-    .note {
+    .divider{
+      height:1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    ul{
+      margin-top: 8px;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      max-width: 82ch;
+    }
+    li{ margin: 0 0 10px 0; }
+    li:last-child{ margin-bottom:0; }
+
+    .callout{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:16px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--paper) 92%, transparent),
+        color-mix(in srgb, var(--paper) 78%, transparent)
+      );
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative; z-index:1;
+    }
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+    footer p{
+      font-size:.92rem;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 740px;
+      margin:0;
     }
-
-    .block {
-      border-top: 1px solid var(--border-light);
-      padding-top: 18px;
-      margin-top: 18px;
-    }
-
-    .bullets {
-      max-width: 740px;
-      margin-top: 10px;
+    .footer-link{
+      font-size:.92rem;
       color: var(--text-secondary);
     }
 
-    .bullets li {
-      margin-left: 18px;
-      margin-bottom: 8px;
-    }
-
-    .cta-row { margin-top: 18px; }
-
-    .cta-btn {
-      display: inline-block;
-      background: var(--btn-bg);
-      color: var(--btn-text);
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      border: 1px solid var(--btn-bg);
-    }
-    .cta-btn:hover { border-bottom: none; opacity: 0.92; }
-
-    /* Diagnostic */
-    .diag {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .q {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .q label {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      cursor: pointer;
-      color: var(--text-secondary);
-    }
-
-    .q input { margin-top: 4px; }
-
-    .score {
-      margin-top: 14px;
-      color: var(--text-secondary);
-    }
-
-    .score strong { color: var(--text-primary); }
-
-    /* Form */
-    form {
-      margin-top: 16px;
-      display: grid;
-      gap: 14px;
-      max-width: 740px;
-    }
-
-    .row { display: grid; gap: 6px; }
-
-    label.formlabel {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-    }
-
-    input[type="text"], input[type="email"], textarea, select {
-      width: 100%;
-      padding: 12px 12px;
-      border: 1px solid var(--border-light);
-      background: var(--field-bg);
-      font-size: 1rem;
-      color: var(--text-primary);
-      border-radius: 8px;
-      outline: none;
-    }
-
-    textarea { min-height: 120px; resize: vertical; }
-
-    .btn {
-      justify-self: start;
-      background: var(--btn-bg);
-      color: var(--btn-text);
-      border: 1px solid var(--btn-bg);
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      cursor: pointer;
-    }
-
-    .btn:hover { opacity: 0.92; }
-
-    .fineprint {
-      margin-top: 6px;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      max-width: 740px;
-    }
-
-    .email-fallback {
-      margin-top: 12px;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    /* Form status */
-    .status {
-      margin-top: 12px;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 740px;
-    }
-
-    footer {
-      border-top: 1px solid var(--border-light);
-      padding: 40px 20px;
-    }
-
-    footer .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    footer p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: 650px;
-      margin: 0;
-    }
-
-    footer a { font-size: 0.9rem; }
-
-    @media (max-width: 600px) {
-      nav ul { gap: 16px; }
-      h1 { font-size: 1.9rem; }
-      main { padding: 60px 20px; }
+    @media (max-width: 760px){
+      nav{ flex-direction:column; align-items:flex-start; gap:12px; }
+      nav ul{ justify-content:flex-start; width:100%; gap:16px; }
+      .hero{ padding:32px 18px; }
+      .section-card{ padding:26px 18px; }
+      main{ padding:38px 18px 72px; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <div class="brand"><a href="/">DomainElevation</a></div>
-      <ul>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
+
+      <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/portfolios">Portfolios</a></li>
         <li><a href="/philosophy">Philosophy</a></li>
@@ -260,247 +251,45 @@
   </header>
 
   <main>
-    <!-- HERO (reframed: diagnostic + inevitability, not advisory) -->
-    <section>
-      <h1>Naming decisions compound. Domains lock them in.</h1>
-      <p>
-        A diagnostic for founders navigating naming risk, category positioning, and domain constraints.
-        Understand availability and defensibility before you commit.
+    <section class="hero" aria-label="Naming hero">
+      <h1>Naming Risk &amp; Domain Reality</h1>
+      <p class="lede">
+        A domain is a constraint system: single owner, finite supply, permanent memory, and a default trust surface.
+        The best names reduce friction at the exact moment a category becomes inevitable.
       </p>
-      <p class="note">
-        This page is not crowdsourced brainstorming. It is a lens on structural risk.
-      </p>
-      <div class="cta-row">
-        <a class="cta-btn" href="#diagnostic">Assess naming risk</a>
+    </section>
+
+    <section class="section-card" aria-label="Why domains compound">
+      <h2>Why Certain Names Compound</h2>
+      <ul>
+        <li><strong>Scarcity is structural:</strong> there is only one canonical identity for any category at the root level.</li>
+        <li><strong>Switching costs grow:</strong> once adopted, the name becomes entangled with trust, SEO, and operations.</li>
+        <li><strong>Clarity beats novelty:</strong> users default to obvious naming when stakes rise.</li>
+        <li><strong>Time favors primitives:</strong> infrastructure categories mature; naming consolidates.</li>
+      </ul>
+    </section>
+
+    <section class="section-card" aria-label="Risk framework">
+      <h2>A Simple Risk Framework</h2>
+      <div class="callout">
+        <p><strong>Category Risk:</strong> will this category exist and matter in 5–10 years?</p>
+        <p><strong>Terminology Risk:</strong> will the word stay the word?</p>
+        <p><strong>Regulatory Risk:</strong> will policy change how the market names itself?</p>
+        <p><strong>Behavior Risk:</strong> will users still type, search, and trust domains?</p>
       </div>
-    </section>
-
-    <!-- CONTEXT -->
-    <section>
-      <h2>Context</h2>
-      <p>Most naming problems do not announce themselves early.</p>
+      <div class="divider" role="separator" aria-hidden="true"></div>
       <p>
-        They surface later as legal friction, investor skepticism, domain regret, brand dilution,
-        or forced rebrands after traction.
+        We focus on low terminology risk and high inevitability: identity, payments, coordination, access, compliance, and
+        the interfaces through which humans and agents interact.
       </p>
-      <p class="note">
-        If you are here, you are likely sensing friction before it becomes visible.
-      </p>
-    </section>
-
-    <!-- WHO THIS IS FOR (kept, tightened) -->
-    <section>
-      <h2>Who this is for</h2>
-      <p>This diagnostic is most relevant if you are:</p>
-      <ul class="bullets">
-        <li>Launching a new company, protocol, or product</li>
-        <li>Renaming after traction, legal risk, or strategic drift</li>
-        <li>Evaluating a premium domain or defensible naming position</li>
-        <li>Making a category-defining naming decision</li>
-      </ul>
-      <p class="note" style="margin-top:12px;">
-        If none of the above apply, you likely do not need this page.
-      </p>
-    </section>
-
-    <!-- COMMON FAILURE MODES (kept) -->
-    <section>
-      <h2>Common failure modes</h2>
-      <p>Most names fail for structural reasons, not taste.</p>
-      <ul class="bullets">
-        <li>The name requires explanation</li>
-        <li>Trademark or namespace risk was underestimated</li>
-        <li>The domain is compromised or indefensible</li>
-        <li>The name does not match the category’s language</li>
-        <li>The name will not scale with future products</li>
-        <li>International, pronunciation, or abbreviation issues</li>
-        <li>Investor optics do not match business reality</li>
-      </ul>
-      <p class="note" style="margin-top:12px;">
-        These issues compound. Early clarity prevents late cost.
-      </p>
-    </section>
-
-    <!-- DIAGNOSTIC (kept) -->
-    <section id="diagnostic">
-      <h2>Domain Diagnostic</h2>
-      <p class="note">
-  A brief self-assessment to surface structural naming and domain risk early.
-</p>
-
-      <div class="block">
-        <div class="diag">
-          <div class="q"><label><input type="checkbox" class="diag-check" />Would an enterprise customer take your domain seriously?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Would a regulator or compliance team view it as credible?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Is your name easily confused with another company?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Are you relying on modifiers (get, try, app, use, etc.)?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Do competitors own cleaner naming positions?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Would you confidently pitch this name to investors?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Does your name describe a feature instead of a category?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Could this name survive a pivot?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Will it age well in five to ten years?</label></div>
-          <div class="q"><label><input type="checkbox" class="diag-check" />Would someone remember it after hearing it once?</label></div>
-        </div>
-
-        <div class="score" id="scoreText">
-          <strong>Score:</strong> 0 / 10
-          <div class="note" id="scoreInterpretation" style="margin-top:8px;">
-            Low structural risk.
-          </div>
-        </div>
-
-        <!-- NEW: outcome framing (converts to constraint thinking) -->
-        <div class="block">
-          <h2 style="margin-bottom:12px;">What this score usually implies</h2>
-          <p class="note" id="scoreBandNote">
-            Most teams with low structural risk proceed without intervention.
-          </p>
-          <p class="note">
-            The remaining constraint is often simple: whether the domain you want is actually available.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEW: THE THREE PATHS (domain-first framing) -->
-    <section>
-      <h2>Reality framing</h2>
-      <p>
-        Most teams in naming ambiguity eventually converge on one of three paths:
-      </p>
-      <ul class="bullets">
-        <li><strong>Proceed with a compromised position</strong> — fast now, expensive later.</li>
-        <li><strong>Rename early</strong> — higher pain upfront, higher clarity long-term.</li>
-        <li><strong>Secure a defensible position</strong> — rare, expensive, and often constrained by availability.</li>
-      </ul>
-      <p class="note" style="margin-top:12px;">
-        The third path is not about preference. It is about constraint.
-      </p>
-    </section>
-
-    <!-- NEW: ON DEFENSIBLE POSITIONS (subtle AssetsNow routing without naming it) -->
-    <section>
-      <h2>On defensible positions</h2>
-      <p>
-        Category-defining domains are often held long-term. Some sit inside private portfolios.
-        A small number change hands quietly.
-      </p>
-      <p class="note">
-        Understanding what is actually available is often the hardest part of naming.
-      </p>
-    </section>
-
-    <!-- REQUEST FORM (reframed: availability + constraints, shorter, less inviting) -->
-    <section id="request">
-      <h2>Discuss availability & constraints</h2>
-      <p class="note">
-        If availability is the constraint, share brief context below.
-        We cannot respond to general brainstorming requests.
-      </p>
-
-      <!-- FORMSPREE -->
-      <!-- Replace YOUR_FORMSPREE_ID -->
-      <form id="namingForm" method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_ID">
-        <input type="hidden" name="_subject" value="Availability & Constraints Inquiry — DomainElevation" />
-        <input type="hidden" name="_redirect" value="https://domainelevation.com/naming/thanks/" />
-
-        <!-- Honeypot -->
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-        <div class="row">
-          <label class="formlabel" for="name">Name</label>
-          <input type="text" id="name" name="name" autocomplete="name" required />
-        </div>
-
-        <div class="row">
-          <label class="formlabel" for="email">Email</label>
-          <input type="email" id="email" name="email" autocomplete="email" required />
-        </div>
-
-        <div class="row">
-          <label class="formlabel" for="company">Company / Product</label>
-          <input type="text" id="company" name="company" autocomplete="organization" required />
-        </div>
-
-        <div class="row">
-          <label class="formlabel" for="category">Category (one sentence)</label>
-          <input type="text" id="category" name="category" required />
-        </div>
-
-        <div class="row">
-          <label class="formlabel" for="current">Current name + domain (if applicable)</label>
-          <input type="text" id="current" name="current" autocomplete="url" />
-        </div>
-
-        <div class="row">
-          <label class="formlabel" for="timeline">Timeline</label>
-          <select id="timeline" name="timeline" required>
-            <option value="">Select one</option>
-            <option value="immediate">Immediate</option>
-            <option value="30-60">Next 30–60 days</option>
-            <option value="exploratory">Exploratory</option>
-          </select>
-        </div>
-
-        <div class="row">
-          <label class="formlabel" for="prompt">What prompted this inquiry? (optional)</label>
-          <textarea id="prompt" name="prompt" placeholder="Availability constraint, legal friction, investor optics, domain defensibility, etc."></textarea>
-        </div>
-
-        <button class="btn" type="submit">Continue</button>
-
-        <div class="fineprint">
-          No public inventory. No newsletters. No obligation. If it’s not a fit, we’ll be direct.
-        </div>
-
-        <div class="email-fallback">
-          Prefer email? <a href="mailto:hello@domainelevation.com?subject=Availability%20%26%20Constraints&body=Company%20%2F%20Product%3A%0ACategory%3A%0ACurrent%20name%20%2B%20domain%3A%0ATimeline%3A%0AConstraint%3A">hello@domainelevation.com</a>
-        </div>
-
-        <div class="status" id="formStatus" aria-live="polite"></div>
-      </form>
     </section>
   </main>
 
   <footer>
     <div class="footer-inner">
-      <p>
-        DomainElevation stewards digital naming assets and studies structural naming risk across emerging categories.
-      </p>
-      <a href="/contact">Contact</a>
+      <p>DomainElevation studies structural naming risk and domain constraints across emerging categories.</p>
+      <a class="footer-link" href="/naming">Naming Risk &amp; Domain Reality</a>
     </div>
   </footer>
-
-  <script>
-    // Diagnostic scoring (simple + private: no external calls)
-    (function () {
-      const checks = Array.from(document.querySelectorAll(".diag-check"));
-      const scoreText = document.getElementById("scoreText");
-      const scoreBandNote = document.getElementById("scoreBandNote");
-
-      function render() {
-        const score = checks.filter(c => c.checked).length;
-
-        scoreText.innerHTML = '<strong>Score:</strong> ' + score + ' / 10' +
-          '<div class="note" id="scoreInterpretation" style="margin-top:8px;"></div>';
-
-        const interpEl = document.getElementById("scoreInterpretation");
-
-        if (score <= 3) {
-          interpEl.textContent = "Low structural risk.";
-          scoreBandNote.textContent = "Most teams with low structural risk proceed without intervention. Availability is often the only remaining constraint.";
-        } else if (score <= 6) {
-          interpEl.textContent = "Moderate friction.";
-          scoreBandNote.textContent = "Moderate friction. Many teams compensate with modifiers or marketing spend. A defensible domain position can remove a surprising amount of drag.";
-        } else {
-          interpEl.textContent = "High structural risk.";
-          scoreBandNote.textContent = "High structural risk. Most teams eventually revisit naming or domain strategy after traction. Resolving constraints earlier is usually cheaper.";
-        }
-      }
-
-      checks.forEach(c => c.addEventListener("change", render));
-      render();
-    })();
-  </script>
 </body>
 </html>
