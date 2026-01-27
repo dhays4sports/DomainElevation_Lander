@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Infrastructure &amp; Identity | DomainElevation</title>
+  <meta name="description" content="A curated set of foundational naming primitives spanning payments, compliance, identity verification, coordination, and trust infrastructure." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/portfolios/infrastructure-identity" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Infrastructure & Identity | DomainElevation" />
+  <meta property="og:description" content="A curated set of foundational naming primitives spanning payments, compliance, identity verification, coordination, and trust infrastructure." />
+  <meta property="og:url" content="https://domainelevation.com/portfolios/infrastructure-identity" />
+  <meta property="og:image" content="https://domainelevation.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      /* Subordinate to DomainElevation: reuse the same system, quieter contrast */
+      --bg:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#121212;
+
+      --text-secondary:rgba(18,18,18,.76);
+      --text-muted:rgba(18,18,18,.56);
+
+      --border:rgba(18,18,18,.10);
+      --border-strong:rgba(18,18,18,.16);
+
+      /* Keep accent but reduce presence */
+      --accent:#7a4cff;
+
+      --max-width:960px;
+
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.06);
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    /* Keep the subtle grain, but slightly lighter than homepage */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background: radial-gradient(transparent 1px, rgba(0,0,0,.018) 1px);
+      background-size: 7px 7px;
+      opacity:.20;
+      mix-blend-mode:multiply;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    a:hover{ border-bottom-color: rgba(18,18,18,.38); }
+
+    /* Header / Nav (same as DE, but highlight Portfolios) */
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+
+    nav{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+
+    .brand-mark{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 72%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+      transform: translateY(-1px);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width:0;
+    }
+
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+    }
+    nav ul a:hover{ color:var(--ink); }
+
+    /* Active state */
+    nav ul a[aria-current="page"]{
+      color:var(--ink);
+      border-bottom-color: rgba(18,18,18,.38);
+    }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:44px 22px 88px;
+      position:relative;
+      z-index:1;
+    }
+
+    /* Subordinate hero: smaller, calmer, more “register” than “pitch” */
+    .top{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:34px 34px 28px;
+    }
+
+    .kicker{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom:12px;
+    }
+
+    .kicker .dot{
+      width:7px; height:7px; border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 70%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(1.85rem, 3.6vw, 2.6rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.18;
+      margin-bottom:12px;
+      max-width: 26ch;
+    }
+
+    .lede{
+      max-width: 78ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 16px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.82rem;
+      color: var(--text-muted);
+      background: color-mix(in srgb, var(--paper) 84%, transparent);
+    }
+
+    .divider{
+      height:1px;
+      background: var(--border);
+      margin: 18px 0 0;
+    }
+
+    /* Portfolio sections */
+    section{ margin-top: 22px; }
+
+    .section-card{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:26px 34px;
+    }
+
+    h2{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom:12px;
+    }
+
+    p{
+      max-width: 80ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    p:last-child{ margin-bottom:0; }
+
+    /* Holdings list (quiet register) */
+    .holdings-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:12px;
+      margin-top: 10px;
+    }
+
+    .holding{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:14px 14px 12px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--paper) 94%, transparent),
+        color-mix(in srgb, var(--paper) 82%, transparent)
+      );
+    }
+
+    .holding-title{
+      font-weight:600;
+      color: var(--ink);
+      margin-bottom:6px;
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .holding-title code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:.86rem;
+      font-weight:600;
+      letter-spacing: .01em;
+      background: transparent;
+      padding:0;
+    }
+
+    .holding-tag{
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      white-space:nowrap;
+    }
+
+    .holding-note{
+      font-size:.95rem;
+      color: var(--text-secondary);
+      line-height:1.55;
+    }
+
+    /* “Hidden” assets */
+    .masked{
+      opacity:.80;
+    }
+    .masked code{
+      filter: blur(2.6px);
+      user-select:none;
+    }
+    .masked .holding-note{
+      color: color-mix(in srgb, var(--text-secondary) 84%, transparent);
+    }
+
+    /* Disclosure / policy */
+    .policy{
+      font-size:.92rem;
+      color: var(--text-muted);
+      line-height:1.7;
+    }
+    .policy strong{ color: var(--ink); }
+
+    /* Inquiry */
+    .inquiry{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 16px;
+      border:1px solid var(--border);
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      margin-top: 12px;
+    }
+
+    .inquiry-left{
+      min-width: 240px;
+    }
+    .inquiry-title{
+      font-weight:600;
+      margin-bottom:4px;
+      color: var(--ink);
+    }
+    .inquiry-sub{
+      color: var(--text-muted);
+      font-size:.95rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-strong);
+      background: var(--ink);
+      color: #fff;
+      font-weight: 650;
+      letter-spacing: .01em;
+      white-space:nowrap;
+    }
+    .btn:hover{ opacity:.92; border-bottom-color: transparent; }
+
+    .btn.secondary{
+      background: transparent;
+      color: var(--ink);
+    }
+
+    /* Footer (quiet) */
+    footer{
+      border-top:1px solid var(--border);
+      padding:30px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative;
+      z-index:1;
+      margin-top: 30px;
+    }
+
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer p{
+      font-size:.92rem;
+      color: var(--text-muted);
+      margin:0;
+      max-width: 78ch;
+    }
+
+    .footer-link{
+      font-size:.92rem;
+      color: var(--text-secondary);
+    }
+
+    /* Mobile */
+    @media (max-width: 760px){
+      nav{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+      nav ul{
+        justify-content:flex-start;
+        width:100%;
+        gap:16px;
+      }
+      main{ padding:38px 18px 72px; }
+      .top{ padding:28px 18px 22px; }
+      .section-card{ padding:22px 18px; }
+      .holdings-grid{ grid-template-columns: 1fr; }
+      h1{ max-width: 100%; }
+      body::before{ opacity:.14; }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0e0f12;
+        --paper:#12141a;
+        --ink:#f4f5f7;
+
+        --text-secondary:rgba(244,245,247,.78);
+        --text-muted:rgba(244,245,247,.56);
+
+        --border:rgba(244,245,247,.10);
+        --border-strong:rgba(244,245,247,.16);
+
+        --shadow: 0 18px 50px rgba(0,0,0,.40);
+      }
+      body::before{
+        opacity:.12;
+        mix-blend-mode: normal;
+        background: radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+        background-size: 7px 7px;
+      }
+      a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolios" aria-current="page">Portfolios</a></li>
+        <li><a href="/philosophy">Philosophy</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="top" aria-label="Portfolio header">
+      <div class="kicker"><span class="dot" aria-hidden="true"></span> Portfolio</div>
+      <h1>Infrastructure &amp; Identity</h1>
+      <p class="lede">
+        A curated set of foundational naming primitives spanning payments, compliance, identity verification,
+        coordination, and trust infrastructure.
+      </p>
+
+      <div class="meta-row" aria-label="Portfolio attributes">
+        <span class="pill">Quiet register</span>
+        <span class="pill">Long-horizon primitives</span>
+        <span class="pill">Selective placement</span>
+      </div>
+
+      <div class="divider" role="separator" aria-hidden="true"></div>
+    </section>
+
+    <section class="section-card" aria-label="Holdings register">
+      <h2>Selected Holdings</h2>
+      <p class="policy">
+        This register is intentionally incomplete. Certain positions are withheld from public view to preserve optionality.
+        <strong>Qualified counterparties</strong> may request a fuller inventory under NDA.
+      </p>
+
+      <div class="holdings-grid" role="list" aria-label="Holdings list">
+        <!-- ====== PAYMENTS & SETTLEMENT ====== -->
+        <div class="holding" role="listitem">
+          <div class="holding-title">
+            <code>epsilonpayments.com</code>
+            <span class="holding-tag">Payments</span>
+          </div>
+          <div class="holding-note">Institutional-grade payments naming primitive.</div>
+        </div>
+
+        <div class="holding" role="listitem">
+          <div class="holding-title">
+            <code>settlementrail.com</code>
+            <span class="holding-tag">Settlement</span>
+          </div>
+          <div class="holding-note">Clear, infrastructure-forward settlement identity.</div>
+        </div>
+
+        <!-- ====== COMPLIANCE & TRUST ====== -->
+        <div class="holding" role="listitem">
+          <div class="holding-title">
+            <code>compliancelayer.com</code>
+            <span class="holding-tag">Compliance</span>
+          </div>
+          <div class="holding-note">Layered compliance / policy control vocabulary.</div>
+        </div>
+
+        <div class="holding" role="listitem">
+          <div class="holding-title">
+            <code>idvtrust.com</code>
+            <span class="holding-tag">IDV</span>
+          </div>
+          <div class="holding-note">Identity verification + trust framing in one token.</div>
+        </div>
+
+        <!-- ====== COORDINATION & WORKFLOW ====== -->
+        <div class="holding" role="listitem">
+          <div class="holding-title">
+            <code>workflowcoordination.com</code>
+            <span class="holding-tag">Coordination</span>
+          </div>
+          <div class="holding-note">Systems-level coordination and delegation language.</div>
+        </div>
+
+        <div class="holding masked" role="listitem" aria-label="Withheld holding">
+          <div class="holding-title">
+            <code>withheld-asset.example</code>
+            <span class="holding-tag">Withheld</span>
+          </div>
+          <div class="holding-note">Additional positions available under NDA.</div>
+        </div>
+      </div>
+
+      <div class="inquiry" aria-label="Inquiry prompt">
+        <div class="inquiry-left">
+          <div class="inquiry-title">Request portfolio access</div>
+          <div class="inquiry-sub">Qualified inquiries only · NDA available upon request</div>
+        </div>
+        <div class="inquiry-right">
+          <a class="btn" href="mailto:hello@domainelevation.com?subject=Infrastructure%20%26%20Identity%20%E2%80%94%20Portfolio%20Inquiry">Email inquiry</a>
+          <a class="btn secondary" href="/portfolios">Back to portfolios</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <p>DomainElevation maintains a small number of focused portfolios with long-horizon conviction.</p>
+        <a class="footer-link" href="/naming">Naming Risk &amp; Domain Reality</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
