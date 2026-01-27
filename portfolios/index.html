@@ -4,156 +4,314 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolios — DomainElevation</title>
-  <meta name="description" content="DomainElevation stewards multiple portfolios, each structured around a distinct thesis and time horizon." />
+  <meta name="description" content="DomainElevation portfolios across infrastructure, identity, agent interfaces, and experimental narrative positions." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/portfolios" />
 
-  <!-- Privacy-safe analytics (Plausible-style) -->
-  <!-- Replace domainelevation.com with your real domain -->
-  <script defer data-domain="domainelevation.com" src="https://plausible.io/js/script.js"></script>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Portfolios — DomainElevation" />
+  <meta property="og:description" content="A disciplined set of naming positions across infrastructure and emerging categories." />
+  <meta property="og:url" content="https://domainelevation.com/portfolios" />
+  <meta property="og:image" content="https://domainelevation.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <style>
-    :root {
-      --bg: #ffffff;
-      --text-primary: #111111;
-      --text-secondary: #444444;
-      --text-muted: #777777;
-      --border-light: #e5e5e5;
-      --max-width: 900px;
-      --font-serif: "Georgia", "Times New Roman", serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    :root{
+      --bg:#0e0f12;
+      --paper:#12141a;
+      --ink:#f4f5f7;
+
+      --text-secondary:rgba(244,245,247,.78);
+      --text-muted:rgba(244,245,247,.56);
+
+      --border:rgba(244,245,247,.10);
+      --border-strong:rgba(244,245,247,.16);
+
+      --accent:#7a4cff;
+
+      --max-width:960px;
+
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.40);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
 
-    body {
-      background: var(--bg);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      line-height: 1.6;
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
     }
 
-    a {
-      color: var(--text-primary);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-    a:hover { border-bottom: 1px solid var(--text-primary); }
-
-    header { border-bottom: 1px solid var(--border-light); }
-
-    nav {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 24px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.12;
+      mix-blend-mode: normal;
+      background: radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+      background-size: 7px 7px;
     }
 
-    nav .brand {
-      font-weight: 500;
-      letter-spacing: 0.02em;
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
+    nav{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      position:relative;
+      z-index:1;
     }
 
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 80px 20px;
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+    .brand-mark{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
     }
 
-    section { margin-bottom: 80px; }
-
-    h1 {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 400;
-      margin-bottom: 18px;
+    nav ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width:0;
     }
 
-    h2 {
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+      position:relative;
+    }
+    nav ul a:hover{
+      color:var(--ink);
+      border-bottom-color: rgba(244,245,247,.35);
+    }
+
+    /* Active state (add aria-current="page" on the active link) */
+    nav ul a[aria-current="page"]{
+      color: var(--ink);
+    }
+    nav ul a[aria-current="page"]::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-10px;
+      height:2px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--ink) 40%, transparent);
+    }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:44px 22px 88px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero{
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:38px 34px;
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(2.0rem, 4.2vw, 3.0rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.14;
+      margin-bottom:14px;
+      max-width: 26ch;
+    }
+
+    .lede{
+      max-width: 78ch;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+    }
+
+    section{ margin-top: 18px; }
+
+    .section-card{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:30px 34px;
+      margin-top:16px;
+    }
+
+    h2{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom:14px;
     }
 
-    p {
-      max-width: 740px;
+    p{
+      max-width: 78ch;
       color: var(--text-secondary);
       font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    p:last-child{ margin-bottom:0; }
+
+    .divider{
+      height:1px;
+      background: var(--border);
+      margin: 18px 0;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-      margin-top: 18px;
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+      margin-top: 12px;
     }
 
-    .card {
-      padding: 18px 0;
-      border-top: 1px solid var(--border-light);
+    .item{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:16px 16px 14px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--paper) 92%, transparent),
+        color-mix(in srgb, var(--paper) 78%, transparent)
+      );
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .item:hover{
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
     }
 
-    .card:first-child { border-top: 1px solid var(--border-light); }
-
-    .title {
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 8px;
+    .item-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight:600;
+      color: var(--ink);
+      margin-bottom:6px;
     }
 
-    .note {
-      margin-top: 18px;
+    .item-kicker{
+      font-size:.80rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 740px;
     }
 
-    footer {
-      border-top: 1px solid var(--border-light);
-      padding: 40px 20px;
-    }
-
-    footer .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    footer p {
-      font-size: 0.9rem;
+    .meta{
+      font-size:.92rem;
       color: var(--text-muted);
-      max-width: 650px;
     }
 
-    footer a { font-size: 0.9rem; }
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative;
+      z-index:1;
+    }
 
-    @media (max-width: 600px) {
-      nav ul { gap: 16px; }
-      h1 { font-size: 1.9rem; }
-      main { padding: 60px 20px; }
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer p{
+      font-size:.92rem;
+      color: var(--text-muted);
+      margin:0;
+      max-width: 78ch;
+    }
+
+    .footer-link{
+      font-size:.92rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 760px){
+      nav{ flex-direction:column; align-items:flex-start; gap:12px; }
+      nav ul{ justify-content:flex-start; width:100%; gap:16px; }
+      .hero{ padding:32px 18px; }
+      .section-card{ padding:26px 18px; }
+      .grid{ grid-template-columns: 1fr; }
+      main{ padding:38px 18px 72px; }
+      nav ul a[aria-current="page"]::after{ bottom:-8px; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <div class="brand"><a href="/">DomainElevation</a></div>
-      <ul>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
+
+      <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="/portfolios">Portfolios</a></li>
+        <li><a href="/portfolios" aria-current="page">Portfolios</a></li>
         <li><a href="/philosophy">Philosophy</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
@@ -161,68 +319,80 @@
   </header>
 
   <main>
-    <section>
+    <section class="hero" aria-label="Portfolios hero">
       <h1>Portfolios</h1>
-      <p>
-        DomainElevation stewards multiple domain portfolios, each structured around a distinct thesis,
-        time horizon, and role within the digital economy.
-      </p>
-      <p class="note">
-        We do not operate a public inventory. Each portfolio reflects conviction in naming as infrastructure — not merchandise.
+      <p class="lede">
+        A disciplined set of naming positions across infrastructure, identity, command interfaces, and asymmetric R&amp;D.
+        Most holdings are long-duration. Select placements occur quietly.
       </p>
     </section>
 
-    <section>
-      <h2>Collections</h2>
+    <section class="section-card" aria-label="Portfolio groups">
+      <h2>Portfolio Sets</h2>
+      <p class="meta">Representative categories. Not a complete inventory.</p>
+      <div class="divider" role="separator" aria-hidden="true"></div>
 
       <div class="grid">
-        <div class="card">
-          <div class="title">
+        <div class="item">
+          <div class="item-title">
             <a href="https://assetsnow.com" target="_blank" rel="noopener noreferrer">AssetsNow</a>
+            <span class="item-kicker">Flagship</span>
           </div>
           <p>
-            A flagship collection of category-defining digital assets positioned at the intersection of capital,
-            infrastructure, and immediacy. Extension-agnostic and intentionally scarce.
+            A discreet acquisition and representation surface for category-defining assets at the intersection of capital,
+            infrastructure, and immediacy.
           </p>
         </div>
 
-        <div class="card">
-          <div class="title">Agent &amp; Command Interfaces</div>
+        <div class="item">
+          <div class="item-title">
+            <span>Infrastructure &amp; Identity</span>
+            <span class="item-kicker">Primitives</span>
+          </div>
           <p>
-            Domain-native surfaces designed for interaction, orchestration, and automation. Product-aligned assets that
-            support emerging agent and workflow paradigms.
+            Naming primitives spanning payments, compliance, coordination, access, and trust systems.
           </p>
         </div>
 
-        <div class="card">
-          <div class="title">Infrastructure &amp; Identity</div>
+        <div class="item">
+          <div class="item-title">
+            <span>Agent &amp; Command Interfaces</span>
+            <span class="item-kicker">Surfaces</span>
+          </div>
           <p>
-            Foundational naming primitives spanning payments, compliance, coordination, and trust. Built for credibility
-            in complex or regulated environments.
+            Domain-native interfaces designed for interaction, orchestration, routing, and automation.
           </p>
         </div>
 
-        <div class="card">
-          <div class="title">Experimental &amp; Narrative</div>
+        <div class="item">
+          <div class="item-title">
+            <span>Experimental &amp; Narrative</span>
+            <span class="item-kicker">R&amp;D</span>
+          </div>
           <p>
-            Asymmetric positions aligned with emerging behaviors and early language formation. Evaluated dynamically as
-            narratives mature or fade.
+            Asymmetric positions aligned with emerging behaviors, new categories, and shifting naming constraints.
           </p>
         </div>
       </div>
+    </section>
 
-      <p class="note">
-        Most assets across these portfolios are held long-term. Select placements occur privately and intentionally.
+    <section class="section-card" aria-label="Disposition">
+      <h2>Disposition</h2>
+      <p>
+        DomainElevation is not a marketplace. Holdings are curated positions.
+      </p>
+      <div class="divider" role="separator" aria-hidden="true"></div>
+      <p>
+        If you are a qualified operator or acquirer seeking a category-defining identity, we will route you to the appropriate
+        surface (typically AssetsNow) for discreet dialogue.
       </p>
     </section>
   </main>
 
   <footer>
     <div class="footer-inner">
-      <p>
-        DomainElevation also offers private naming advisory for founders and teams navigating complex naming decisions.
-      </p>
-      <a href="/naming">Naming Advisory</a>
+      <p>DomainElevation studies structural naming risk and domain constraints across emerging categories.</p>
+      <a class="footer-link" href="/naming">Naming Risk &amp; Domain Reality</a>
     </div>
   </footer>
 </body>
