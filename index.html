@@ -305,7 +305,26 @@ nav ul a.active{
   opacity:.9;
   transform: translateY(-2px);
 }
-    
+
+    /* Linked portfolio titles */
+.item-title a{
+  border-bottom: 1px solid transparent;
+}
+.item-title a:hover{
+  border-bottom-color: rgba(18,18,18,.40);
+}
+
+/* Optional subtle external indicator */
+.ext-link::after{
+  content:" ↗";
+  font-size:.85em;
+  opacity:.55;
+}
+
+/* If you want it to appear only on hover, use this instead:
+.ext-link::after{ content:" ↗"; font-size:.85em; opacity:0; transition:opacity .15s ease; }
+.ext-link:hover::after{ opacity:.55; }
+*/
     /* Research list */
 .research-list{
   display:grid;
@@ -568,7 +587,7 @@ nav ul a.active{
     <!-- Infrastructure & Identity -->
     <div class="item">
       <div class="item-title">
-        <span>Infrastructure &amp; Identity</span>
+        <a class="ext-link" href="/portfolios/infrastructure-identity">Infrastructure &amp; Identity</a>
         <span class="item-kicker">Primitives</span>
       </div>
       <p>
