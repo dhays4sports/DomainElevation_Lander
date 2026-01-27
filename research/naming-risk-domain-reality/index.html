@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naming Risk &amp; Domain Reality — DomainElevation</title>
+  <meta name="description" content="A practical framework for structural naming risk: the constraints that govern durable naming assets." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/research/naming-risk-domain-reality" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Naming Risk &amp; Domain Reality" />
+  <meta property="og:description" content="The constraints that actually govern durable naming assets." />
+  <meta property="og:url" content="https://domainelevation.com/research/naming-risk-domain-reality" />
+  <meta property="og:image" content="https://domainelevation.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    /* Same theme as /research index (kept self-contained for easy deploy) */
+    :root{
+      --bg:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#121212;
+
+      --text-secondary:rgba(18,18,18,.78);
+      --text-muted:rgba(18,18,18,.58);
+
+      --border:rgba(18,18,18,.10);
+      --border-strong:rgba(18,18,18,.16);
+
+      --accent:#7a4cff;
+      --max-width:960px;
+
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.06);
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background: radial-gradient(transparent 1px, rgba(0,0,0,.02) 1px);
+      background-size: 7px 7px;
+      opacity:.25;
+      mix-blend-mode:multiply;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    a:hover{ border-bottom-color:rgba(18,18,18,.40); }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+
+    nav{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+    .brand-mark{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width:0;
+    }
+
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+    }
+    nav ul a:hover{
+      color:var(--ink);
+      border-bottom-color:rgba(18,18,18,.40);
+    }
+
+    .nav-links a.active{
+      color: var(--ink);
+      border-bottom-color: color-mix(in srgb, var(--accent) 55%, rgba(18,18,18,.35));
+      padding-bottom: 8px;
+    }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:44px 22px 88px;
+      position:relative;
+      z-index:1;
+    }
+
+    .post{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 38px 34px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .kicker .dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(2.05rem, 4.2vw, 3.05rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.12;
+      margin-bottom: 14px;
+      max-width: 28ch;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color: var(--text-muted);
+      font-size: .92rem;
+      margin-bottom: 18px;
+    }
+
+    .lede{
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 80ch;
+      margin-bottom: 18px;
+    }
+
+    .rule{
+      height:1px;
+      background: var(--border);
+      margin: 20px 0 18px;
+    }
+
+    h2{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin: 22px 0 10px;
+    }
+
+    p{
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin: 0 0 14px 0;
+      max-width: 80ch;
+    }
+
+    ul{
+      margin: 0 0 14px 0;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      max-width: 80ch;
+    }
+    li{ margin: 0 0 10px 0; }
+
+    .callout{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--paper) 92%, transparent),
+        color-mix(in srgb, var(--paper) 78%, transparent)
+      );
+      margin: 18px 0;
+    }
+    .callout strong{ color: var(--ink); }
+
+    .back{
+      margin-top: 18px;
+      display:inline-block;
+      font-size: .95rem;
+      color: var(--text-muted);
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative;
+      z-index:1;
+    }
+
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer p{
+      font-size:.92rem;
+      color: var(--text-muted);
+      margin:0;
+      max-width: 78ch;
+    }
+
+    .footer-link{
+      font-size:.92rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 760px){
+      nav{ flex-direction:column; align-items:flex-start; gap:12px; }
+      nav ul{ justify-content:flex-start; width:100%; gap:16px; }
+      main{ padding:34px 18px 72px; }
+      .post{ padding: 30px 18px; }
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0e0f12;
+        --paper:#12141a;
+        --ink:#f4f5f7;
+
+        --text-secondary:rgba(244,245,247,.78);
+        --text-muted:rgba(244,245,247,.56);
+
+        --border:rgba(244,245,247,.10);
+        --border-strong:rgba(244,245,247,.16);
+
+        --shadow: 0 18px 50px rgba(0,0,0,.40);
+      }
+      body::before{
+        opacity:.12;
+        mix-blend-mode: normal;
+        background: radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+        background-size: 7px 7px;
+      }
+      a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolios">Portfolios</a></li>
+        <li><a class="active" href="/research">Research</a></li>
+        <li><a href="/philosophy">Philosophy</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post" aria-label="Research post">
+      <div class="kicker"><span class="dot" aria-hidden="true"></span> Thesis</div>
+
+      <h1>Naming Risk &amp; Domain Reality</h1>
+
+      <div class="meta">
+        <span>DomainElevation Research</span>
+        <span>·</span>
+        <span>2026-01-26</span>
+        <span>·</span>
+        <span>~6 min read</span>
+      </div>
+
+      <p class="lede">
+        Most naming debates focus on taste. Durable naming assets are governed by constraints:
+        scarcity, ambiguity, legal surface area, and distribution mechanics. This note is a practical
+        framework for evaluating “great names” under real-world conditions.
+      </p>
+
+      <div class="rule" role="separator" aria-hidden="true"></div>
+
+      <h2>What “risk” actually means</h2>
+      <p>
+        Naming risk is the probability that a name fails to function as a stable identity layer over time.
+        It’s not just brand perception — it’s whether the name can survive growth, internationalization,
+        compliance, and competitive pressure.
+      </p>
+
+      <div class="callout">
+        <p><strong>Rule of thumb:</strong> the most valuable names are the ones that remain correct even as the world changes.</p>
+      </div>
+
+      <h2>Four constraint layers</h2>
+      <ul>
+        <li><strong>Semantic constraints:</strong> is the meaning obvious, stable, and globally legible?</li>
+        <li><strong>Scarcity constraints:</strong> does the namespace have credible substitutes?</li>
+        <li><strong>Legal constraints:</strong> is the name usable without constant defensive posture?</li>
+        <li><strong>Distribution constraints:</strong> does the name reduce friction in search, speech, and sharing?</li>
+      </ul>
+
+      <h2>Why category names behave like infrastructure</h2>
+      <p>
+        When a name becomes the default language for a category, it tends to behave like public infrastructure:
+        high reuse, predictable demand, and long-term defensibility. That’s why category-defining domains
+        can outlive product cycles.
+      </p>
+
+      <h2>A practical evaluation checklist</h2>
+      <ul>
+        <li>Would a person guess it without seeing it written?</li>
+        <li>Does it survive global expansion without explanation?</li>
+        <li>Does it reduce the cost of trust (compared to a novel brand)?</li>
+        <li>Would the name still be “right” if the product changes?</li>
+      </ul>
+
+      <a class="back" href="/research">← Back to Research</a>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>DomainElevation studies structural naming risk and domain constraints across emerging categories.</p>
+      <a class="footer-link" href="/naming">Naming Risk &amp; Domain Reality</a>
+    </div>
+  </footer>
+</body>
+</html>
