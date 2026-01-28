@@ -407,6 +407,52 @@ nav ul a.active{
   font-size: 1rem;
 }
 
+    /* Steward block */
+.steward-wrap{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.steward-photo{
+  width:84px;
+  height:84px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  overflow:hidden;
+  flex: 0 0 auto;
+}
+
+.steward-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.steward-name{
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  letter-spacing:-0.01em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.steward-title{
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.steward-note{
+  margin:0;
+  max-width: 72ch;
+}
+
     /* Contact */
     .contact a{
       color: var(--ink);
@@ -646,6 +692,27 @@ nav ul a.active{
   <p style="margin-top:14px;">
     <a href="/research">View all research →</a>
   </p>
+</section>
+
+    <!-- STEWARD -->
+<section class="section-card steward" aria-label="Steward">
+  <h2>Steward</h2>
+
+  <div class="steward-wrap">
+    <div class="steward-photo" aria-hidden="true">
+      <!-- Replace with your headshot later -->
+      <img src="/headshot.jpg" alt="">
+    </div>
+
+    <div>
+      <div class="steward-name">Dylan Haysbert</div>
+      <div class="steward-title">Authorized Representative</div>
+
+      <p class="steward-note">
+        DomainElevation is stewarded privately. Inquiries are handled directly and routed to the appropriate portfolio surface when relevant.
+      </p>
+    </div>
+  </div>
 </section>
     
     <!-- CONTACT -->
