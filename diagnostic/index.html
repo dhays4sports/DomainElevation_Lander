@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Domain Diagnostic — DomainElevation</title>
+  <meta name="description" content="Request a private domain diagnostic. We evaluate structural naming risk, category clarity, and positioning for long-horizon digital assets." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/diagnostic" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Private Domain Diagnostic — DomainElevation" />
+  <meta property="og:description" content="Structural naming risk evaluation. Category position. Quiet, selective responses." />
+  <meta property="og:url" content="https://domainelevation.com/diagnostic" />
+  <meta property="og:image" content="https://domainelevation.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/domainelevation-dot-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/domainelevation-dot-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/domainelevation-dot-180.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#ffffff">
+
+  <style>
+    :root{
+      --bg:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#121212;
+
+      --text-secondary:rgba(18,18,18,.78);
+      --text-muted:rgba(18,18,18,.58);
+
+      --border:rgba(18,18,18,.10);
+      --border-strong:rgba(18,18,18,.16);
+
+      --accent:#7a4cff;
+
+      --max-width:960px;
+
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.06);
+
+      --track:.18em;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background: radial-gradient(transparent 1px, rgba(0,0,0,.02) 1px);
+      background-size: 7px 7px;
+      opacity:.25;
+      mix-blend-mode:multiply;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    a:hover{ border-bottom-color: rgba(18,18,18,.40); }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+
+    nav{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+    .brand-mark{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width:0;
+    }
+
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+    }
+    nav ul a:hover{
+      color:var(--ink);
+      border-bottom-color:rgba(18,18,18,.40);
+    }
+    nav ul a.active{
+      color: var(--ink);
+      border-bottom-color: rgba(18,18,18,.45);
+      font-weight: 500;
+    }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:56px 22px 88px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero{
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:42px 34px;
+    }
+
+    .kicker{
+      font-size:.72rem;
+      letter-spacing: var(--track);
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(2.05rem, 4.2vw, 3.05rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.14;
+      margin-bottom:14px;
+      max-width: 26ch;
+    }
+
+    .lede{
+      max-width: 78ch;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      margin-bottom: 18px;
+    }
+
+    .metaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.82rem;
+      color: var(--text-muted);
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+    }
+
+    .dot{
+      width:7px; height:7px; border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+      margin-top: 18px;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    .panel{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:16px 16px 14px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--paper) 92%, transparent),
+        color-mix(in srgb, var(--paper) 78%, transparent)
+      );
+    }
+
+    .panelTitle{
+      font-size:.72rem;
+      letter-spacing: var(--track);
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .bullets{
+      margin:0;
+      padding-left: 18px;
+      color: var(--text-secondary);
+    }
+    .bullets li{
+      margin: 0 0 10px 0;
+    }
+    .bullets li:last-child{ margin-bottom: 0; }
+
+    /* Form */
+    form{ margin-top: 0; }
+    .fields{ display:grid; gap: 10px; }
+
+    input, textarea, select{
+      width:100%;
+      border:1px solid rgba(18,18,18,.14);
+      background:#fff;
+      color: var(--ink);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    textarea{ resize: vertical; min-height: 120px; }
+
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(122,76,255,.35);
+      box-shadow: 0 0 0 3px rgba(122,76,255,.10);
+    }
+    input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible{
+      outline: 2px solid rgba(18,18,18,.55);
+      outline-offset: 2px;
+    }
+
+    .row2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+
+    .btn{
+      margin-top: 12px;
+      width: 100%;
+      border: 1px solid rgba(18,18,18,.16);
+      background: var(--ink);
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 650;
+      letter-spacing: .02em;
+      cursor:pointer;
+    }
+    .btn:hover{ opacity: .92; }
+
+    .fine{
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 82ch;
+    }
+
+    .status{
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative;
+      z-index:1;
+    }
+
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer p{
+      font-size:.92rem;
+      color: var(--text-muted);
+      margin:0;
+      max-width: 78ch;
+    }
+
+    .footer-link{
+      font-size:.92rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px){
+      nav{ flex-direction:column; align-items:flex-start; gap:12px; }
+      nav ul{ justify-content:flex-start; width:100%; gap:16px; }
+      .hero{ padding:34px 18px; }
+      main{ padding:44px 18px 72px; }
+      .row2{ grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0e0f12;
+        --paper:#12141a;
+        --ink:#f4f5f7;
+
+        --text-secondary:rgba(244,245,247,.78);
+        --text-muted:rgba(244,245,247,.56);
+
+        --border:rgba(244,245,247,.10);
+        --border-strong:rgba(244,245,247,.16);
+
+        --shadow: 0 18px 50px rgba(0,0,0,.40);
+      }
+      body::before{
+        opacity:.12;
+        mix-blend-mode: normal;
+        background: radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+        background-size: 7px 7px;
+      }
+      a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a.active{ border-bottom-color: rgba(244,245,247,.45); }
+
+      input, textarea, select{
+        background: rgba(255,255,255,.02);
+        border-color: rgba(244,245,247,.14);
+        color: var(--ink);
+      }
+      input:focus, textarea:focus, select:focus{
+        border-color: rgba(122,76,255,.42);
+        box-shadow: 0 0 0 3px rgba(122,76,255,.14);
+      }
+      .btn{
+        background: rgba(244,245,247,.92);
+        color: #0e0f12;
+        border-color: rgba(244,245,247,.18);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
+
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolios">Portfolios</a></li>
+        <li><a href="/philosophy">Philosophy</a></li>
+        <li><a href="/research">Research</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Private Domain Diagnostic">
+      <div class="kicker">Private intake</div>
+      <h1>Request a private domain diagnostic.</h1>
+      <p class="lede">
+        We evaluate <strong>structural naming risk</strong>, category clarity, and long-horizon positioning for digital naming assets.
+        Responses are selective. Substantive submissions receive a diagnostic brief.
+      </p>
+
+      <div class="metaRow" aria-label="Signal pills">
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Risk &amp; clarity</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Category position</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Private evaluation</span>
+      </div>
+
+      <div class="grid" aria-label="Diagnostic panels">
+        <section class="panel" aria-label="What you receive">
+          <div class="panelTitle">What you receive</div>
+          <ul class="bullets">
+            <li><strong>Structural risk:</strong> trademark exposure, ambiguity, confusion vectors.</li>
+            <li><strong>Category strength:</strong> clarity, breadth, defensibility, audience fit.</li>
+            <li><strong>Positioning:</strong> likely end-user classes and natural acquisition logic.</li>
+            <li><strong>Action path:</strong> hold / harden / reposition / quietly place.</li>
+          </ul>
+        </section>
+
+        <section class="panel" aria-label="Intake form">
+          <div class="panelTitle">Intake</div>
+
+          <!-- Replace with your Formspree endpoint -->
+          <form id="diag-form" action="https://formspree.io/f/your_form_id" method="POST">
+            <div class="fields">
+              <input name="name" required placeholder="Full name" />
+              <input name="email" type="email" required placeholder="Email" />
+
+              <div class="row2">
+                <input name="company" placeholder="Company (optional)" />
+                <select name="role" required>
+                  <option value="" disabled selected>Your role</option>
+                  <option>Founder / Operator</option>
+                  <option>Investor</option>
+                  <option>Broker / Advisor</option>
+                  <option>In-house legal / brand</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <input name="domain" required placeholder="Domain to evaluate (e.g., example.com)" />
+
+              <div class="row2">
+                <select name="time_horizon" required>
+                  <option value="" disabled selected>Time horizon</option>
+                  <option>0–3 months</option>
+                  <option>3–12 months</option>
+                  <option>1–3 years</option>
+                  <option>3+ years</option>
+                </select>
+
+                <select name="intent" required>
+                  <option value="" disabled selected>Intent</option>
+                  <option>Hold / stewardship</option>
+                  <option>Acquisition evaluation</option>
+                  <option>Potential placement</option>
+                  <option>Repositioning / naming strategy</option>
+                </select>
+              </div>
+
+              <textarea name="context" required placeholder="Context (use case, category, constraints, any known issues)"></textarea>
+
+              <!-- Light anti-spam -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+              <input type="hidden" name="_subject" value="DomainElevation — Private Domain Diagnostic" />
+
+              <button class="btn" type="submit">Request diagnostic brief</button>
+
+              <div class="status" aria-live="polite"></div>
+              <div class="fine">
+                Submissions are reviewed manually. Please include real context (use, authority, timeline).
+                Low-information requests may not receive a response.
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Private holdings · selective evaluation · naming as infrastructure</p>
+      <a class="footer-link" href="/research">View research →</a>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const form = document.getElementById("diag-form");
+      if(!form) return;
+
+      const status = form.querySelector(".status");
+
+      form.addEventListener("submit", async (e) => {
+        // Keep default POST if you prefer non-JS.
+        // This JS gives a smoother status message.
+        e.preventDefault();
+        if(status) status.textContent = "Sending…";
+
+        try{
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept":"application/json" }
+          });
+
+          if(!res.ok) throw new Error("Bad response");
+
+          if(status) status.textContent = "Received. If qualified, you’ll receive a diagnostic brief.";
+          form.reset();
+
+        }catch(err){
+          if(status) status.textContent = "Couldn’t send right now. Please email hello@domainelevation.com.";
+          console.error(err);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
