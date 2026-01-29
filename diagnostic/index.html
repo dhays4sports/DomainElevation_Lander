@@ -633,20 +633,45 @@
               Formal reviews are conducted privately and selectively. Submission does not guarantee engagement.
             </p>
 
-            <!-- Swap action to your preferred endpoint (Formspree, etc.) -->
-            <form id="formal-form" action="mailto:hello@domainelevation.com" method="post" enctype="text/plain">
-              <div class="row" style="margin-top:12px;">
-                <input class="field" name="name" placeholder="Full name" required />
-                <input class="field" name="company" placeholder="Company" />
-                <input class="field" name="email" type="email" placeholder="Email" required />
-                <input class="field" name="domain" placeholder="Domain(s)" required />
-                <textarea class="field" name="message" placeholder="Acquisition / stewardship context" required></textarea>
-              </div>
-              <div class="ctaRow">
-                <button class="btn primary" type="submit">Submit for Formal Review</button>
-              </div>
-              <p class="mutedNote">If you prefer, email: <a href="mailto:hello@domainelevation.com">hello@domainelevation.com</a></p>
-            </form>
+            <!-- Swap action to Formspree (same pattern as SmartDevices) -->
+<form id="formal-form" class="formal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <div class="row" style="margin-top:12px;">
+    <input class="field" name="name" placeholder="Full name" required />
+    <input class="field" name="company" placeholder="Company" />
+    <input class="field" name="email" type="email" placeholder="Email" required />
+    <input class="field" name="domain" placeholder="Domain(s)" required />
+    <textarea class="field" name="message" placeholder="Acquisition / stewardship context" required></textarea>
+  </div>
+
+  <!-- Quiet attribution (optional but recommended) -->
+  <input type="hidden" name="utm_source" />
+  <input type="hidden" name="utm_medium" />
+  <input type="hidden" name="utm_campaign" />
+  <input type="hidden" name="utm_term" />
+  <input type="hidden" name="utm_content" />
+  <input type="hidden" name="referrer" />
+  <input type="hidden" name="landing_url" />
+  <input type="hidden" name="user_agent" />
+  <input type="hidden" name="timezone" />
+  <input type="hidden" name="language" />
+
+  <!-- Internal diagnostic payload (quiet) -->
+  <input type="hidden" name="diagnostic_state" />
+  <input type="hidden" name="diagnostic_score" />
+  <input type="hidden" name="diagnostic_answers" />
+
+  <!-- Optional email subject + thank-you redirect (Formspree supports these) -->
+  <input type="hidden" name="_subject" value="DomainElevation — Formal Diagnostic Review Request" />
+  <input type="hidden" name="_next" value="https://domainelevation.com/thanks.html" />
+  <input type="text" name="_gotcha" style="display:none" />
+
+  <div class="ctaRow">
+    <button class="btn primary" type="submit">Submit for Formal Review</button>
+  </div>
+
+  <div class="status" id="formalStatus" aria-live="polite"></div>
+  <p class="mutedNote">Or email: <a href="mailto:hello@domainelevation.com">hello@domainelevation.com</a></p>
+</form>
           </div>
         </div>
 
@@ -820,6 +845,63 @@
         const internal = document.getElementById('internal');
         internal.textContent = JSON.stringify({ score, state, selected }, null, 2);
 
+       // Store last diagnostic result so we can include it in the Formspree submission.
+window.__diag = { score, state, selected };
+
+// Fill hidden fields on the formal form (if present)
+const ff = document.getElementById('formal-form');
+if (ff){
+  const setHidden = (name, val) => {
+    const el = ff.querySelector(`[name="${name}"]`);
+    if (el) el.value = val || "";
+  };
+
+  setHidden("diagnostic_state", state);
+  setHidden("diagnostic_score", (Math.round(score * 1000) / 1000).toString());
+  setHidden("diagnostic_answers", JSON.stringify(selected));
+
+  // UTMs
+  const params = new URLSearchParams(location.search);
+  ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(k => {
+    setHidden(k, params.get(k));
+  });
+
+  // Attribution
+  setHidden("referrer", document.referrer || "");
+  setHidden("landing_url", location.href);
+  setHidden("user_agent", navigator.userAgent || "");
+  setHidden("timezone", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
+  setHidden("language", navigator.language || "");
+
+  // Ajax-submit the formal form to Formspree (no page reload; respects _next if you want to redirect)
+  const formalStatus = document.getElementById("formalStatus");
+  const NEXT_URL = "https://domainelevation.com/thanks.html";
+
+  ff.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (formalStatus) formalStatus.textContent = "Sending…";
+
+    try {
+      const res = await fetch(ff.action, {
+        method: "POST",
+        body: new FormData(ff),
+        headers: { "Accept": "application/json" }
+      });
+
+      if (!res.ok) throw new Error("Bad response");
+
+      if (formalStatus) formalStatus.textContent = "Sent. Redirecting…";
+      ff.reset();
+      window.location.href = NEXT_URL;
+
+    } catch (err) {
+      if (formalStatus) formalStatus.textContent =
+        "Couldn’t send right now. Please email hello@domainelevation.com.";
+      console.error("Formal review submit failed:", err);
+    }
+  });
+}
+       
         // Gate formal review CTA
         if (shouldShowFormalGate()){
           formalGate.style.display = 'block';
