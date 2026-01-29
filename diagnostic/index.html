@@ -1,22 +1,21 @@
-<!-- =========================================================
- DomainElevation — /diagnostic
- One-screen intake + quiet weighted scoring (internal)
- Drop-in page. Matches your existing DomainElevation aesthetic.
-========================================================== -->
+<!-- /diagnostic/index.html
+     DomainElevation — Domain Diagnostic™ (one-screen intake)
+     Matches the existing site style (same CSS tokens + layout).
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Domain Diagnostic — DomainElevation</title>
-  <meta name="description" content="A private preliminary assessment of structural naming relevance and category authority." />
+  <meta name="description" content="Run a Domain Diagnostic™ to evaluate naming alignment, structural risk, and long-horizon viability." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://domainelevation.com/diagnostic" />
+  <link rel="canonical" href="https://domainelevation.com/diagnostic/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Domain Diagnostic — DomainElevation" />
-  <meta property="og:description" content="Preliminary assessment of structural naming relevance and category authority." />
-  <meta property="og:url" content="https://domainelevation.com/diagnostic" />
+  <meta property="og:description" content="Evaluate naming alignment before capital, brand, or infrastructure hardens." />
+  <meta property="og:url" content="https://domainelevation.com/diagnostic/" />
   <meta property="og:image" content="https://domainelevation.com/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -29,6 +28,7 @@
 
   <style>
     :root{
+      /* Same tokens as your homepage */
       --bg:#fbfaf7;
       --paper:#ffffff;
       --ink:#121212;
@@ -48,8 +48,6 @@
 
       --radius:16px;
       --shadow: 0 18px 50px rgba(0,0,0,.06);
-
-      --track:.18em;
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
@@ -65,7 +63,7 @@
       text-rendering:optimizeLegibility;
     }
 
-    /* subtle grain */
+    /* subtle grain (same as homepage) */
     body::before{
       content:"";
       position:fixed;
@@ -142,7 +140,6 @@
       color:var(--ink);
       border-bottom-color:rgba(18,18,18,.40);
     }
-
     nav ul a.active{
       color: var(--ink);
       border-bottom-color: rgba(18,18,18,.45);
@@ -167,25 +164,44 @@
 
     h1{
       font-family:var(--font-serif);
-      font-size: clamp(2.05rem, 4.2vw, 3.05rem);
+      font-size: clamp(2.05rem, 4.2vw, 3.15rem);
       font-weight: 420;
       letter-spacing:-0.015em;
       line-height:1.14;
-      margin-bottom:14px;
+      margin-bottom:18px;
       max-width: 26ch;
     }
 
     .lede{
-      max-width: 86ch;
+      max-width: 78ch;
       color: var(--text-secondary);
       font-size: 1.02rem;
-      margin-bottom: 12px;
+      margin-bottom: 18px;
     }
 
-    .fine{
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.82rem;
       color: var(--text-muted);
-      font-size: .95rem;
-      max-width: 90ch;
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+    }
+    .dot{
+      width:7px; height:7px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
     }
 
     section{ margin-top: 34px; }
@@ -199,100 +215,135 @@
 
     h2{
       font-size:.78rem;
-      letter-spacing: var(--track);
+      letter-spacing:.18em;
       text-transform:uppercase;
       color: var(--text-muted);
       margin-bottom:14px;
     }
 
+    p{
+      max-width: 78ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    p:last-child{ margin-bottom:0; }
+
     .divider{
       height:1px;
       background: var(--border);
-      margin: 18px 0 20px;
+      margin: 22px 0;
     }
 
-    /* Form layout */
-    form{ margin-top: 12px; }
-
-    .q{
-      padding: 14px 0;
-      border-top: 1px solid var(--border);
-    }
-    .q:first-of-type{ border-top: none; padding-top: 0; }
-    .q:last-of-type{ padding-bottom: 0; }
-
-    .q label.qt{
-      display:block;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 8px;
-      letter-spacing:.005em;
-    }
-
-    .opts{
+    /* Diagnostic form */
+    .diag{
       display:grid;
-      gap:10px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+      align-items:start;
     }
 
-    .opt{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding:10px 12px;
+    .panel{
       border:1px solid var(--border);
       border-radius: 14px;
+      padding:16px 16px 14px;
       background: linear-gradient(
         180deg,
         color-mix(in srgb, var(--paper) 92%, transparent),
         color-mix(in srgb, var(--paper) 78%, transparent)
       );
-      transition: transform .12s ease, border-color .12s ease;
-    }
-    .opt:hover{
-      transform: translateY(-1px);
-      border-color: var(--border-strong);
-    }
-    .opt input{
-      margin-top: 2px;
-      accent-color: var(--accent);
-      transform: scale(1.05);
-    }
-    .opt span{
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.55;
     }
 
-    .row{
+    .panelTitle{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom:12px;
+    }
+
+    .fieldRow{
       display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 14px;
+      gap:10px;
     }
 
-    .field{
+    .input, .textarea, .select{
       width:100%;
-      border: 1px solid var(--border);
-      background: #fff;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
       color: var(--ink);
-      border-radius: 14px;
-      padding: 12px 14px;
+      border-radius: 12px;
+      padding: 12px 12px;
       font: inherit;
-      font-size: 14.5px;
-      outline: none;
-    }
-    textarea.field{ min-height: 110px; resize: vertical; }
-
-    .field:focus{
-      border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+      outline:none;
     }
 
-    .ctaRow{
+    .textarea{ min-height: 110px; resize: vertical; }
+
+    .input:focus, .textarea:focus, .select:focus{
+      border-color: var(--border-strong);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+
+    .qgroup{ margin-top: 14px; }
+    .q{
+      padding: 12px 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      margin-bottom: 10px;
+    }
+    .q:last-child{ margin-bottom:0; }
+
+    .qLabel{
       display:flex;
       gap:10px;
+      align-items:baseline;
+      justify-content:space-between;
+      margin-bottom: 8px;
+    }
+    .qText{
+      color: var(--text-secondary);
+      font-size: .98rem;
+      line-height: 1.5;
+    }
+    .qWeight{
+      font-size: .75rem;
+      letter-spacing:.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space:nowrap;
+      opacity:.9;
+    }
+
+    .choices{
+      display:flex;
       flex-wrap:wrap;
-      margin-top: 16px;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .choice{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 9px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      color: var(--text-secondary);
+      font-size: .9rem;
+      cursor:pointer;
+      user-select:none;
+    }
+    .choice input{ accent-color: var(--accent); }
+    .choice:hover{ border-color: var(--border-strong); }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .btn{
@@ -300,66 +351,83 @@
       align-items:center;
       justify-content:center;
       gap:8px;
-      padding: 11px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border-strong);
-      background: rgba(255,255,255,.55);
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--paper) 90%, transparent);
       color: var(--ink);
-      font-size: 12px;
+      font-size: .88rem;
       letter-spacing: .10em;
       text-transform: uppercase;
       white-space:nowrap;
       cursor:pointer;
     }
-    .btn:hover{ border-color: rgba(18,18,18,.28); }
+    .btn:hover{ border-color: var(--border-strong); }
     .btn.primary{
-      border-color: color-mix(in srgb, var(--accent) 40%, var(--border-strong));
-      background: color-mix(in srgb, var(--accent) 9%, #ffffff);
+      border-color: color-mix(in srgb, var(--accent) 36%, var(--border));
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+
+    .fine{
+      color: var(--text-muted);
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+
+    /* Result states */
+    .resultBox{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+    }
+
+    .resultK{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .resultState{
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      font-weight: 520;
+    }
+
+    .badgeLine{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.78rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+    .badgeDot{
+      width:7px; height:7px; border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    .hidden{ display:none !important; }
+
+    /* Formal review form (Formspree) */
+    .reviewForm{
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
     }
 
     .status{
-      margin-top: 12px;
-      color: var(--text-muted);
-      font-size: .95rem;
-      line-height: 1.6;
-      max-width: 90ch;
-    }
-
-    .result{
-      margin-top: 18px;
-      padding: 18px 18px 16px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: color-mix(in srgb, var(--paper) 84%, transparent);
-      display:none;
-    }
-
-    .result h3{
-      font-family: var(--font-serif);
-      font-weight: 520;
-      letter-spacing:-0.01em;
-      margin-bottom: 8px;
-      font-size: 1.35rem;
-    }
-
-    .result p{
-      color: var(--text-secondary);
-      font-size: 1rem;
-      margin: 0 0 10px 0;
-      max-width: 85ch;
-    }
-
-    .mutedNote{
+      margin-top: 10px;
       color: var(--text-muted);
       font-size: .92rem;
-      margin-top: 8px;
-    }
-
-    .smallCaps{
-      font-size:.78rem;
-      letter-spacing: var(--track);
-      text-transform:uppercase;
-      color: var(--text-muted);
+      line-height:1.6;
     }
 
     footer{
@@ -386,10 +454,10 @@
       margin:0;
       max-width: 78ch;
     }
+    .footer-link{ font-size:.92rem; color: var(--text-secondary); }
 
-    .footer-link{
-      font-size:.92rem;
-      color: var(--text-secondary);
+    @media (max-width: 860px){
+      .diag{ grid-template-columns: 1fr; }
     }
 
     @media (max-width: 760px){
@@ -422,14 +490,9 @@
         background-size: 7px 7px;
       }
 
-      .field{
-        background: rgba(255,255,255,.04);
-        border-color: var(--border);
-        color: var(--ink);
-      }
-
       a:hover{ border-bottom-color: rgba(244,245,247,.35); }
       nav ul a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+
       nav ul a.active{ border-bottom-color: rgba(244,245,247,.45); }
     }
   </style>
@@ -455,485 +518,340 @@
   </header>
 
   <main>
-    <section class="hero" aria-label="Diagnostic header">
-      <h1>Domain Diagnostic — Preliminary Assessment</h1>
+    <section class="hero" aria-label="Hero">
+      <h1>Domain Diagnostic™</h1>
       <p class="lede">
-        A private, preliminary evaluation of structural naming relevance and category authority.
+        Evaluate naming alignment before capital, brand, or infrastructure hardens.
+        This is an internal scoring framework used to assess structural naming risk and long-horizon viability.
       </p>
-      <p class="fine">
-        This diagnostic produces a preliminary signal only. Formal reviews are conducted manually and selectively.
-      </p>
+
+      <div class="pill-row" aria-label="Positioning badges">
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Alignment signal</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Quiet, weighted scoring</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Formal review optional</span>
+      </div>
     </section>
 
-    <section class="section-card" aria-label="Diagnostic form">
-      <h2>Diagnostic Inputs</h2>
+    <section class="section-card" aria-label="Diagnostic">
+      <h2>Run a Diagnostic</h2>
+      <p class="fine">
+        This diagnostic does not provide valuation or legal advice. It produces one of three outcome states:
+        <strong>Aligned</strong>, <strong>Mixed</strong>, or <strong>Misaligned</strong>.
+      </p>
 
-      <form id="diagnostic-form" novalidate>
-        <!-- =========================
-          Section I — Category & Structure
-        ========================== -->
-        <div class="q">
-          <label class="qt">1. The domain is best described as:</label>
-          <div class="opts" role="radiogroup" aria-label="Q1">
-            <label class="opt"><input type="radio" name="q1" value="cat_def" required><span>A category-defining generic</span></label>
-            <label class="opt"><input type="radio" name="q1" value="core_desc"><span>A core category descriptor</span></label>
-            <label class="opt"><input type="radio" name="q1" value="brand"><span>A branded or invented name</span></label>
-            <label class="opt"><input type="radio" name="q1" value="niche"><span>A modifier or niche phrase</span></label>
+      <div class="divider" role="separator" aria-hidden="true"></div>
+
+      <div class="diag" aria-label="Diagnostic grid">
+        <!-- LEFT: questions -->
+        <div class="panel" aria-label="Questions panel">
+          <div class="panelTitle">Inputs</div>
+
+          <div class="fieldRow">
+            <input class="input" id="domain" name="domain" placeholder="Domain to evaluate (e.g., example.com)" autocomplete="off" />
+            <input class="input" id="category" name="category" placeholder="Intended category (e.g., smart devices, identity, payments)" autocomplete="off" />
+            <textarea class="textarea" id="intent" name="intent" placeholder="One sentence: what should this name represent long-term?"></textarea>
           </div>
-        </div>
 
-        <div class="q">
-          <label class="qt">2. The domain’s meaning is immediately clear to a first-time reader.</label>
-          <div class="opts" role="radiogroup" aria-label="Q2">
-            <label class="opt"><input type="radio" name="q2" value="sa" required><span>Strongly agree</span></label>
-            <label class="opt"><input type="radio" name="q2" value="a"><span>Somewhat agree</span></label>
-            <label class="opt"><input type="radio" name="q2" value="n"><span>Neutral / unclear</span></label>
-            <label class="opt"><input type="radio" name="q2" value="d"><span>Disagree</span></label>
-          </div>
-        </div>
+          <div class="qgroup" aria-label="Questions">
+            <!-- Scoring: 0 / 0.5 / 1 per question, weighted -->
+            <div class="q" data-q="q1" data-w="3">
+              <div class="qLabel">
+                <div class="qText"><strong>Category clarity:</strong> the name anchors to a clear, defensible category.</div>
+                <div class="qWeight">Weight 3</div>
+              </div>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="q1" value="0">No</label>
+                <label class="choice"><input type="radio" name="q1" value="0.5">Somewhat</label>
+                <label class="choice"><input type="radio" name="q1" value="1">Yes</label>
+              </div>
+            </div>
 
-        <div class="q">
-          <label class="qt">3. This domain could credibly represent an entire market or function — not just a product.</label>
-          <div class="opts" role="radiogroup" aria-label="Q3">
-            <label class="opt"><input type="radio" name="q3" value="yes_cat" required><span>Yes, at category level</span></label>
-            <label class="opt"><input type="radio" name="q3" value="maybe"><span>Possibly, with positioning</span></label>
-            <label class="opt"><input type="radio" name="q3" value="unlikely"><span>Unlikely</span></label>
-            <label class="opt"><input type="radio" name="q3" value="no"><span>No</span></label>
-          </div>
-        </div>
+            <div class="q" data-q="q2" data-w="3">
+              <div class="qLabel">
+                <div class="qText"><strong>Semantic durability:</strong> the meaning will hold as the market evolves.</div>
+                <div class="qWeight">Weight 3</div>
+              </div>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="q2" value="0">No</label>
+                <label class="choice"><input type="radio" name="q2" value="0.5">Somewhat</label>
+                <label class="choice"><input type="radio" name="q2" value="1">Yes</label>
+              </div>
+            </div>
 
-        <div class="divider" aria-hidden="true"></div>
-        <h2>Market Authority &amp; Scope</h2>
+            <div class="q" data-q="q3" data-w="2">
+              <div class="qLabel">
+                <div class="qText"><strong>Authority fit:</strong> the name can function as a long-term identity or interface.</div>
+                <div class="qWeight">Weight 2</div>
+              </div>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="q3" value="0">No</label>
+                <label class="choice"><input type="radio" name="q3" value="0.5">Somewhat</label>
+                <label class="choice"><input type="radio" name="q3" value="1">Yes</label>
+              </div>
+            </div>
 
-        <div class="q">
-          <label class="qt">4. The category this domain addresses is:</label>
-          <div class="opts" role="radiogroup" aria-label="Q4">
-            <label class="opt"><input type="radio" name="q4" value="global" required><span>Global and cross-industry</span></label>
-            <label class="opt"><input type="radio" name="q4" value="large"><span>Large but sector-specific</span></label>
-            <label class="opt"><input type="radio" name="q4" value="emerging"><span>Emerging or speculative</span></label>
-            <label class="opt"><input type="radio" name="q4" value="narrow"><span>Narrow or declining</span></label>
-          </div>
-        </div>
+            <div class="q" data-q="q4" data-w="3">
+              <div class="qLabel">
+                <div class="qText"><strong>Collision risk:</strong> low chance of trademark / regulatory / semantic conflict.</div>
+                <div class="qWeight">Weight 3</div>
+              </div>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="q4" value="0">No</label>
+                <label class="choice"><input type="radio" name="q4" value="0.5">Unclear</label>
+                <label class="choice"><input type="radio" name="q4" value="1">Yes</label>
+              </div>
+            </div>
 
-        <div class="q">
-          <label class="qt">5. Who would most naturally steward this domain?</label>
-          <div class="opts" role="radiogroup" aria-label="Q5">
-            <label class="opt"><input type="radio" name="q5" value="infra" required><span>Platform or infrastructure company</span></label>
-            <label class="opt"><input type="radio" name="q5" value="consortium"><span>Market-leading operator or consortium</span></label>
-            <label class="opt"><input type="radio" name="q5" value="vc"><span>Venture-backed product or brand</span></label>
-            <label class="opt"><input type="radio" name="q5" value="solo"><span>Individual or small business</span></label>
-          </div>
-        </div>
+            <div class="q" data-q="q5" data-w="2">
+              <div class="qLabel">
+                <div class="qText"><strong>Strategic optionality:</strong> the name preserves multiple credible futures.</div>
+                <div class="qWeight">Weight 2</div>
+              </div>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="q5" value="0">No</label>
+                <label class="choice"><input type="radio" name="q5" value="0.5">Somewhat</label>
+                <label class="choice"><input type="radio" name="q5" value="1">Yes</label>
+              </div>
+            </div>
 
-        <div class="q">
-          <label class="qt">6. The domain’s authority would increase over time rather than decay.</label>
-          <div class="opts" role="radiogroup" aria-label="Q6">
-            <label class="opt"><input type="radio" name="q6" value="sa" required><span>Strongly agree</span></label>
-            <label class="opt"><input type="radio" name="q6" value="a"><span>Likely</span></label>
-            <label class="opt"><input type="radio" name="q6" value="u"><span>Uncertain</span></label>
-            <label class="opt"><input type="radio" name="q6" value="d"><span>Unlikely</span></label>
-          </div>
-        </div>
+            <div class="actions" aria-label="Actions">
+              <button class="btn primary" id="runBtn" type="button">Run diagnostic →</button>
+              <button class="btn" id="resetBtn" type="button">Reset</button>
+            </div>
 
-        <div class="divider" aria-hidden="true"></div>
-        <h2>Control, Scarcity &amp; Defensibility</h2>
-
-        <div class="q">
-          <label class="qt">7. This domain represents a scarce naming position that cannot be easily substituted.</label>
-          <div class="opts" role="radiogroup" aria-label="Q7">
-            <label class="opt"><input type="radio" name="q7" value="high" required><span>Highly scarce</span></label>
-            <label class="opt"><input type="radio" name="q7" value="mod"><span>Moderately scarce</span></label>
-            <label class="opt"><input type="radio" name="q7" value="sub"><span>Easily substituted</span></label>
-            <label class="opt"><input type="radio" name="q7" value="none"><span>Non-scarce</span></label>
-          </div>
-        </div>
-
-        <div class="q">
-          <label class="qt">8. Comparable alternatives (plurals, hyphenation, extensions) materially weaken authority.</label>
-          <div class="opts" role="radiogroup" aria-label="Q8">
-            <label class="opt"><input type="radio" name="q8" value="yes" required><span>Yes — alternatives are meaningfully inferior</span></label>
-            <label class="opt"><input type="radio" name="q8" value="some"><span>Somewhat</span></label>
-            <label class="opt"><input type="radio" name="q8" value="not"><span>Not really</span></label>
-            <label class="opt"><input type="radio" name="q8" value="no"><span>No</span></label>
-          </div>
-        </div>
-
-        <div class="q">
-          <label class="qt">9. Control of this domain conveys long-term strategic leverage.</label>
-          <div class="opts" role="radiogroup" aria-label="Q9">
-            <label class="opt"><input type="radio" name="q9" value="yes" required><span>Yes, structurally</span></label>
-            <label class="opt"><input type="radio" name="q9" value="maybe"><span>Potentially</span></label>
-            <label class="opt"><input type="radio" name="q9" value="u"><span>Unclear</span></label>
-            <label class="opt"><input type="radio" name="q9" value="no"><span>No</span></label>
-          </div>
-        </div>
-
-        <div class="divider" aria-hidden="true"></div>
-        <h2>Intent &amp; Time Horizon</h2>
-
-        <div class="q">
-          <label class="qt">10. Intended holding or stewardship horizon:</label>
-          <div class="opts" role="radiogroup" aria-label="Q10">
-            <label class="opt"><input type="radio" name="q10" value="10" required><span>5–10+ years</span></label>
-            <label class="opt"><input type="radio" name="q10" value="5"><span>3–5 years</span></label>
-            <label class="opt"><input type="radio" name="q10" value="short"><span>Short-term disposition</span></label>
-            <label class="opt"><input type="radio" name="q10" value="u"><span>Undecided</span></label>
-          </div>
-        </div>
-
-        <div class="q">
-          <label class="qt">11. Primary intent for this asset:</label>
-          <div class="opts" role="radiogroup" aria-label="Q11">
-            <label class="opt"><input type="radio" name="q11" value="infra" required><span>Long-term infrastructure or platform identity</span></label>
-            <label class="opt"><input type="radio" name="q11" value="def"><span>Strategic acquisition / defense</span></label>
-            <label class="opt"><input type="radio" name="q11" value="mon"><span>Monetization or resale</span></label>
-            <label class="opt"><input type="radio" name="q11" value="u"><span>Exploratory / unsure</span></label>
-          </div>
-        </div>
-
-        <div class="q">
-          <label class="qt">12. Are you seeking an objective diagnostic rather than a valuation?</label>
-          <div class="opts" role="radiogroup" aria-label="Q12">
-            <label class="opt"><input type="radio" name="q12" value="yes" required><span>Yes</span></label>
-            <label class="opt"><input type="radio" name="q12" value="some"><span>Somewhat</span></label>
-            <label class="opt"><input type="radio" name="q12" value="no"><span>No</span></label>
-          </div>
-        </div>
-
-        <div class="divider" aria-hidden="true"></div>
-
-        <h2>Optional Context</h2>
-        <p class="fine">If you want a formal review option to appear, provide a domain and minimal context.</p>
-
-        <div class="row">
-          <input class="field" id="domain" name="domain" placeholder="Domain (optional)" autocomplete="off" />
-          <textarea class="field" id="context" name="context" placeholder="Context (optional) — intended use, timeline, decision authority"></textarea>
-          <input class="field" id="email" name="email" type="email" placeholder="Email (optional)" autocomplete="email" />
-        </div>
-
-        <div class="ctaRow" aria-label="Actions">
-          <button class="btn primary" type="submit">Run Preliminary Diagnostic</button>
-          <button class="btn" type="button" id="resetBtn">Reset</button>
-        </div>
-
-        <div class="status" id="status" aria-live="polite"></div>
-
-        <!-- Result block (no numeric score shown; internal only) -->
-        <div class="result" id="result" aria-live="polite">
-          <div class="smallCaps">Preliminary Diagnostic Result</div>
-          <h3 id="resultTitle"></h3>
-          <p id="resultBody"></p>
-          <p class="mutedNote" id="resultNext"></p>
-
-          <!-- Formal review CTA (gated) -->
-          <div class="divider" aria-hidden="true"></div>
-          <div id="formalGate" style="display:none;">
-            <div class="smallCaps">Request Formal Review</div>
             <p class="fine" style="margin-top:10px;">
-              Formal reviews are conducted privately and selectively. Submission does not guarantee engagement.
+              Results are directional. If you request a formal review, include decision authority, intended use, and timeline.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT: results + formal review -->
+        <aside class="panel" aria-label="Results panel">
+          <div class="panelTitle">Outcome</div>
+
+          <div id="resultBox" class="resultBox">
+            <div class="resultK">Result state</div>
+            <div class="resultState" id="resultState">Not yet evaluated</div>
+            <p class="fine" id="resultCopy">
+              Complete the inputs and run the diagnostic. The scoring logic is internal and weighted.
             </p>
 
-            <!-- Swap action to Formspree (same pattern as SmartDevices) -->
-<form id="formal-form" class="formal" action="https://formspree.io/f/xvzrglaw" method="POST">
-  <div class="row" style="margin-top:12px;">
-    <input class="field" name="name" placeholder="Full name" required />
-    <input class="field" name="company" placeholder="Company" />
-    <input class="field" name="email" type="email" placeholder="Email" required />
-    <input class="field" name="domain" placeholder="Domain(s)" required />
-    <textarea class="field" name="message" placeholder="Acquisition / stewardship context" required></textarea>
-  </div>
+            <div class="badgeLine" id="badgeLine">
+              <span class="badgeDot" aria-hidden="true"></span>
+              <span id="resultMeta">Domain Diagnostic™ — internal signal</span>
+            </div>
 
-  <!-- Quiet attribution (optional but recommended) -->
-  <input type="hidden" name="utm_source" />
-  <input type="hidden" name="utm_medium" />
-  <input type="hidden" name="utm_campaign" />
-  <input type="hidden" name="utm_term" />
-  <input type="hidden" name="utm_content" />
-  <input type="hidden" name="referrer" />
-  <input type="hidden" name="landing_url" />
-  <input type="hidden" name="user_agent" />
-  <input type="hidden" name="timezone" />
-  <input type="hidden" name="language" />
+            <!-- Formal review request (Formspree) -->
+            <div class="reviewForm hidden" id="reviewFormWrap" aria-label="Formal review request">
+              <div class="divider" role="separator" aria-hidden="true" style="margin:14px 0;"></div>
+              <div class="resultK">Formal review (optional)</div>
 
-  <!-- Internal diagnostic payload (quiet) -->
-  <input type="hidden" name="diagnostic_state" />
-  <input type="hidden" name="diagnostic_score" />
-  <input type="hidden" name="diagnostic_answers" />
+              <!--
+                Formspree:
+                - Replace action URL with your Formspree endpoint
+                - _next should point to your thank-you page
+              -->
+              <form id="formal-review-form"
+                    action="https://formspree.io/f/xvzrglaw"
+                    method="POST"
+                    novalidate>
 
-  <!-- Optional email subject + thank-you redirect (Formspree supports these) -->
-  <input type="hidden" name="_subject" value="DomainElevation — Formal Diagnostic Review Request" />
-  <input type="hidden" name="_next" value="https://domainelevation.com/thanks.html" />
-  <input type="text" name="_gotcha" style="display:none" />
+                <div class="fieldRow" style="margin-top:10px;">
+                  <input class="input" name="name" required placeholder="Full name" autocomplete="name" />
+                  <input class="input" name="company" placeholder="Company / org" autocomplete="organization" />
+                  <input class="input" name="email" type="email" required placeholder="Email" autocomplete="email" />
+                  <textarea class="textarea" name="message" required placeholder="Context: intended use, decision authority, timeline."></textarea>
+                </div>
 
-  <div class="ctaRow">
-    <button class="btn primary" type="submit">Submit for Formal Review</button>
-  </div>
+                <!-- Diagnostic payload (hidden) -->
+                <input type="hidden" name="domain" id="h_domain" />
+                <input type="hidden" name="category" id="h_category" />
+                <input type="hidden" name="intent" id="h_intent" />
+                <input type="hidden" name="diagnostic_state" id="h_state" />
+                <input type="hidden" name="diagnostic_score" id="h_score" />
+                <input type="hidden" name="diagnostic_details" id="h_details" />
 
-  <div class="status" id="formalStatus" aria-live="polite"></div>
-  <p class="mutedNote">Or email: <a href="mailto:hello@domainelevation.com">hello@domainelevation.com</a></p>
-</form>
+                <input type="hidden" name="_subject" value="Domain Diagnostic — Formal Review Request" />
+                <input type="hidden" name="_next" value="https://domainelevation.com/diagnostic/thanks.html" />
+                <input type="text" name="_gotcha" style="display:none" />
+
+                <button class="btn primary" type="submit" style="margin-top:12px; width:100%;">
+                  Request formal review →
+                </button>
+
+                <div class="status" id="status" aria-live="polite"></div>
+              </form>
+
+              <p class="fine" style="margin-top:10px;">
+                Submissions are reviewed selectively. No valuation is provided through this form.
+              </p>
+            </div>
           </div>
-        </div>
-
-        <!-- Internal debug placeholder (kept hidden; optional to remove) -->
-        <div id="internal" style="display:none;"></div>
-      </form>
+        </aside>
+      </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-inner">
-      <p>Run a preliminary domain diagnostic to assess structural alignment and category authority.</p>
-      <a class="footer-link" href="/diagnostic">Domain Diagnostic →</a>
+      <p>Use the Domain Diagnostic™ to evaluate naming alignment before positioning hardens.</p>
+      <a class="footer-link" href="/diagnostic">Run a diagnostic →</a>
     </div>
   </footer>
 
   <script>
     (function(){
-      const form = document.getElementById('diagnostic-form');
-      const statusEl = document.getElementById('status');
-      const resultEl = document.getElementById('result');
-      const titleEl = document.getElementById('resultTitle');
-      const bodyEl  = document.getElementById('resultBody');
-      const nextEl  = document.getElementById('resultNext');
-      const formalGate = document.getElementById('formalGate');
-      const resetBtn = document.getElementById('resetBtn');
+      const runBtn = document.getElementById("runBtn");
+      const resetBtn = document.getElementById("resetBtn");
 
-      // ==============
-      // Quiet, weighted scoring (internal)
-      // No numeric score shown to user; used only to pick result state.
-      // ==============
+      const domainEl = document.getElementById("domain");
+      const categoryEl = document.getElementById("category");
+      const intentEl = document.getElementById("intent");
 
-      // Weights by question importance (structural > intent)
-      const W = {
-        q1: 1.15, q2: 1.10, q3: 1.20,
-        q4: 1.05, q5: 1.00, q6: 1.10,
-        q7: 1.15, q8: 1.00, q9: 1.10,
-        q10: 0.90, q11: 0.95, q12: 0.85
-      };
+      const resultStateEl = document.getElementById("resultState");
+      const resultCopyEl = document.getElementById("resultCopy");
 
-      // Each answer maps to a normalized score in [0,1].
-      // Higher = stronger alignment with DomainElevation thesis.
-      const S = {
-        q1: { cat_def: 1.00, core_desc: 0.85, brand: 0.55, niche: 0.35 },
-        q2: { sa: 1.00, a: 0.80, n: 0.55, d: 0.30 },
-        q3: { yes_cat: 1.00, maybe: 0.70, unlikely: 0.40, no: 0.20 },
-        q4: { global: 1.00, large: 0.80, emerging: 0.55, narrow: 0.30 },
-        q5: { infra: 1.00, consortium: 0.85, vc: 0.60, solo: 0.35 },
-        q6: { sa: 1.00, a: 0.80, u: 0.55, d: 0.30 },
-        q7: { high: 1.00, mod: 0.75, sub: 0.45, none: 0.25 },
-        q8: { yes: 1.00, some: 0.78, not: 0.52, no: 0.30 },
-        q9: { yes: 1.00, maybe: 0.72, u: 0.50, no: 0.28 },
-        q10:{ "10": 1.00, "5": 0.78, short: 0.42, u: 0.55 },
-        q11:{ infra: 1.00, def: 0.82, mon: 0.48, u: 0.55 },
-        q12:{ yes: 1.00, some: 0.75, no: 0.35 }
-      };
+      const reviewWrap = document.getElementById("reviewFormWrap");
 
-      // Hard negative gating: If user is explicitly "valuation-seeking" (q12=no),
-      // we cap result to Mixed at best.
-      function capForValuationSeeking(selected){
-        return selected.q12 === 'no';
+      // Hidden payload fields for Formspree
+      const hDomain = document.getElementById("h_domain");
+      const hCategory = document.getElementById("h_category");
+      const hIntent = document.getElementById("h_intent");
+      const hState = document.getElementById("h_state");
+      const hScore = document.getElementById("h_score");
+      const hDetails = document.getElementById("h_details");
+
+      // Questions config (weights are stored on DOM too; this is for details)
+      const Q = [
+        { key: "q1", label: "Category clarity", weight: 3 },
+        { key: "q2", label: "Semantic durability", weight: 3 },
+        { key: "q3", label: "Authority fit", weight: 2 },
+        { key: "q4", label: "Collision risk", weight: 3 },
+        { key: "q5", label: "Strategic optionality", weight: 2 },
+      ];
+
+      // Thresholds:
+      // - Aligned:   >= 78
+      // - Mixed:     52–77.99
+      // - Misaligned < 52
+      function classify(score){
+        if (score >= 78) return "Aligned";
+        if (score >= 52) return "Mixed";
+        return "Misaligned";
       }
 
-      function getSelected(){
-        const data = new FormData(form);
-        const out = {};
-        for (const [k, v] of data.entries()){
-          if (k.startsWith('q')) out[k] = v;
-        }
-        return out;
+      function getRadioVal(name){
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        return checked ? Number(checked.value) : null;
       }
 
-      function computeWeightedScore(sel){
-        let totalW = 0;
-        let sum = 0;
+      function run(){
+        // Require some basic inputs (keeps it "institutional" + reduces junk)
+        const domain = (domainEl.value || "").trim();
+        const category = (categoryEl.value || "").trim();
 
-        for (const q in W){
-          const w = W[q];
-          const v = sel[q];
-          if (!v || !S[q] || S[q][v] === undefined) continue;
-          totalW += w;
-          sum += w * S[q][v];
-        }
-
-        if (totalW <= 0) return 0;
-        return sum / totalW; // normalized 0..1
-      }
-
-      function pickState(score, valuationCap){
-        // Thresholds tuned for institutional tone:
-        // >=0.78 strong; 0.58..0.78 mixed; <0.58 misaligned
-        if (valuationCap){
-          // cap: never show Strong if they selected "No" for objective diagnostic
-          if (score >= 0.78) return 'mixed';
-          return (score >= 0.58) ? 'mixed' : 'misaligned';
-        }
-        if (score >= 0.78) return 'strong';
-        if (score >= 0.58) return 'mixed';
-        return 'misaligned';
-      }
-
-      function renderState(state){
-        const states = {
-          strong: {
-            title: 'Structural Alignment Detected',
-            body:
-              'This asset exhibits indicators consistent with category authority, naming clarity, and long-horizon relevance. Based on the information provided, the domain aligns with characteristics commonly associated with durable naming infrastructure.',
-            next:
-              'Next step: request a formal review if you are seeking deeper assessment or potential representation.'
-          },
-          mixed: {
-            title: 'Partial Structural Alignment',
-            body:
-              'This asset shows some indicators of relevance, but also presents limitations related to scope, defensibility, or authority. Further evaluation may be warranted depending on intended use and time horizon.',
-            next:
-              'Next step: you may request a formal review to explore positioning, risk factors, or alternative strategies.'
-          },
-          misaligned: {
-            title: 'Limited Structural Alignment',
-            body:
-              'Based on the information provided, this asset does not currently exhibit strong indicators of category-level naming authority. This does not imply lack of value — only that it may not align with DomainElevation’s core thesis.',
-            next:
-              'Next step: formal review is optional and reserved for exceptional or evolving cases.'
-          }
-        };
-
-        titleEl.textContent = states[state].title;
-        bodyEl.textContent  = states[state].body;
-        nextEl.textContent  = states[state].next;
-        resultEl.style.display = 'block';
-      }
-
-      function shouldShowFormalGate(){
-        const domain = (document.getElementById('domain').value || '').trim();
-        const email  = (document.getElementById('email').value || '').trim();
-        // Gate is intentionally minimal:
-        // If they provided a domain OR email, we show the formal form.
-        return domain.length > 0 || email.length > 0;
-      }
-
-      function allQuestionsAnswered(){
-        // Ensure each q1..q12 has a value
-        for (let i=1;i<=12;i++){
-          const name = 'q'+i;
-          const checked = form.querySelector(`input[name="${name}"]:checked`);
-          if (!checked) return false;
-        }
-        return true;
-      }
-
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        statusEl.textContent = '';
-        formalGate.style.display = 'none';
-
-        if (!allQuestionsAnswered()){
-          statusEl.textContent = 'Please answer all diagnostic questions to generate a preliminary result.';
+        if (!domain || !category){
+          resultStateEl.textContent = "Not yet evaluated";
+          resultCopyEl.textContent = "Add the domain and intended category, then run the diagnostic.";
+          reviewWrap.classList.add("hidden");
           return;
         }
 
-        const selected = getSelected();
-        const score = computeWeightedScore(selected);
-        const valuationCap = capForValuationSeeking(selected);
-        const state = pickState(score, valuationCap);
+        let weightedSum = 0;
+        let weightedMax = 0;
 
-        // Render
-        renderState(state);
+        const details = [];
 
-        // Quiet internal logging (optional)
-        // Remove entirely if you prefer.
-        const internal = document.getElementById('internal');
-        internal.textContent = JSON.stringify({ score, state, selected }, null, 2);
+        for (const q of Q){
+          const v = getRadioVal(q.key);
+          weightedMax += q.weight * 1;
+          // If unanswered, treat as 0 (quietly)
+          const vv = (v === null ? 0 : v);
+          weightedSum += vv * q.weight;
 
-       // Store last diagnostic result so we can include it in the Formspree submission.
-window.__diag = { score, state, selected };
-
-// Fill hidden fields on the formal form (if present)
-const ff = document.getElementById('formal-form');
-if (ff){
-  const setHidden = (name, val) => {
-    const el = ff.querySelector(`[name="${name}"]`);
-    if (el) el.value = val || "";
-  };
-
-  setHidden("diagnostic_state", state);
-  setHidden("diagnostic_score", (Math.round(score * 1000) / 1000).toString());
-  setHidden("diagnostic_answers", JSON.stringify(selected));
-
-  // UTMs
-  const params = new URLSearchParams(location.search);
-  ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(k => {
-    setHidden(k, params.get(k));
-  });
-
-  // Attribution
-  setHidden("referrer", document.referrer || "");
-  setHidden("landing_url", location.href);
-  setHidden("user_agent", navigator.userAgent || "");
-  setHidden("timezone", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
-  setHidden("language", navigator.language || "");
-
-  // Ajax-submit the formal form to Formspree (no page reload; respects _next if you want to redirect)
-  const formalStatus = document.getElementById("formalStatus");
-  const NEXT_URL = "https://domainelevation.com/thanks.html";
-
-  ff.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    if (formalStatus) formalStatus.textContent = "Sending…";
-
-    try {
-      const res = await fetch(ff.action, {
-        method: "POST",
-        body: new FormData(ff),
-        headers: { "Accept": "application/json" }
-      });
-
-      if (!res.ok) throw new Error("Bad response");
-
-      if (formalStatus) formalStatus.textContent = "Sent. Redirecting…";
-      ff.reset();
-      window.location.href = NEXT_URL;
-
-    } catch (err) {
-      if (formalStatus) formalStatus.textContent =
-        "Couldn’t send right now. Please email hello@domainelevation.com.";
-      console.error("Formal review submit failed:", err);
-    }
-  });
-}
-       
-        // Gate formal review CTA
-        if (shouldShowFormalGate()){
-          formalGate.style.display = 'block';
-
-          // Prefill the formal form if possible
-          const domain = (document.getElementById('domain').value || '').trim();
-          const email  = (document.getElementById('email').value || '').trim();
-          const context= (document.getElementById('context').value || '').trim();
-
-          const ff = document.getElementById('formal-form');
-          if (ff){
-            const dEl = ff.querySelector('[name="domain"]');
-            const eEl = ff.querySelector('[name="email"]');
-            const mEl = ff.querySelector('[name="message"]');
-
-            if (domain && dEl && !dEl.value) dEl.value = domain;
-            if (email && eEl && !eEl.value) eEl.value = email;
-            if (context && mEl && !mEl.value) mEl.value = context;
-          }
+          details.push({
+            key: q.key,
+            label: q.label,
+            weight: q.weight,
+            value: vv
+          });
         }
 
-        // Subtle scroll into view (optional)
-        resultEl.scrollIntoView({ behavior:'smooth', block:'start' });
-      });
+        // Convert to 0-100
+        const score = weightedMax > 0 ? (weightedSum / weightedMax) * 100 : 0;
+        const state = classify(score);
 
-      resetBtn.addEventListener('click', ()=>{
-        form.reset();
-        statusEl.textContent = '';
-        resultEl.style.display = 'none';
-        formalGate.style.display = 'none';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+        // Copy per state (matches the “good / mixed / misaligned” logic you asked for)
+        const copyByState = {
+          "Aligned": "Structurally sound with clear long-term positioning. A formal review may be warranted if you are near-term serious and have decision authority.",
+          "Mixed": "Viable, but with identifiable constraints or category tension. A formal review can clarify risk, positioning, and alternative paths.",
+          "Misaligned": "High risk of semantic drift, collision, or mispositioning. If you proceed, expect constraints; a formal review is recommended only for serious repositioning efforts."
+        };
+
+        resultStateEl.textContent = state;
+        resultCopyEl.textContent = copyByState[state] || "";
+
+        // Reveal formal review form (always available after a run, per your “formal review optional” framing)
+        reviewWrap.classList.remove("hidden");
+
+        // Populate hidden payload for Formspree
+        hDomain.value = domain;
+        hCategory.value = category;
+        hIntent.value = (intentEl.value || "").trim();
+        hState.value = state;
+        hScore.value = score.toFixed(1);
+        hDetails.value = JSON.stringify(details);
+      }
+
+      function reset(){
+        domainEl.value = "";
+        categoryEl.value = "";
+        intentEl.value = "";
+        document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+
+        resultStateEl.textContent = "Not yet evaluated";
+        resultCopyEl.textContent = "Complete the inputs and run the diagnostic. The scoring logic is internal and weighted.";
+        reviewWrap.classList.add("hidden");
+
+        // Clear hidden payload
+        hDomain.value = "";
+        hCategory.value = "";
+        hIntent.value = "";
+        hState.value = "";
+        hScore.value = "";
+        hDetails.value = "";
+      }
+
+      runBtn.addEventListener("click", run);
+      resetBtn.addEventListener("click", reset);
+
+      // Formspree: submit via fetch for clean UX (stays consistent with your other pages)
+      const form = document.getElementById("formal-review-form");
+      const status = document.getElementById("status");
+
+      if (form){
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          if (status) status.textContent = "Sending…";
+
+          try{
+            const res = await fetch(form.action, {
+              method: "POST",
+              body: new FormData(form),
+              headers: { "Accept": "application/json" }
+            });
+
+            if (!res.ok) throw new Error("Bad response");
+
+            if (status) status.textContent = "Sent. Redirecting…";
+            // Redirect to your thank-you page (matches _next)
+            window.location.href = "https://domainelevation.com/diagnostic/thanks.html";
+          }catch(err){
+            if (status) status.textContent = "Couldn’t send right now. Please email hello@domainelevation.com.";
+            console.error("Formspree submit failed:", err);
+          }
+        });
+      }
     })();
   </script>
 </body>
