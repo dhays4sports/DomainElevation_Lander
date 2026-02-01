@@ -522,25 +522,26 @@
     <section class="hero" aria-label="Hero">
       <h1>Domain Diagnostic™</h1>
       <p class="lede">
-        Evaluate naming alignment before capital, brand, or infrastructure hardens.
-      </p>
-     <p class="lede">
-        The Domain Diagnostic™ is a structured alignment assessment used internally to guide review and long-horizon positioning.
-      </p>
+  A second opinion on your domain before you commit. I review category fit, credibility, and long-horizon risk—so you can confidently <strong>keep it</strong>, <strong>rethink it</strong>, or <strong>pivot early</strong>.
+</p>
+
+<p class="lede">
+  Not a valuation. Not automated. You’ll receive a concise written diagnostic by email within <strong>48–72 hours</strong>.
+</p>
 
       <div class="pill-row" aria-label="Positioning badges">
-        <span class="pill"><span class="dot" aria-hidden="true"></span> Alignment signal</span>
-        <span class="pill"><span class="dot" aria-hidden="true"></span> Quiet, weighted scoring</span>
-        <span class="pill"><span class="dot" aria-hidden="true"></span> Formal review optional</span>
+        <span class="pill"><span class="dot"></span> Credibility + category fit</span>
+<span class="pill"><span class="dot"></span> Long-horizon naming risk</span>
+<span class="pill"><span class="dot"></span> Keep / rethink / pivot</span>
       </div>
     </section>
 
     <section class="section-card" aria-label="Diagnostic">
       <h2>Run a Diagnostic</h2>
       <p class="fine">
-        This diagnostic does not provide valuation or legal advice. It produces one of three outcome states —
-        <strong>Aligned</strong>, <strong>Mixed</strong>, or <strong>Misaligned</strong> — based on structural naming considerations.
-       </p>
+  This is not legal advice or a formal appraisal. It’s a directional naming review that returns one of three states —
+  <strong>Aligned</strong>, <strong>Mixed</strong>, or <strong>Misaligned</strong> — based on category fit, credibility signal, and long-horizon clarity.
+</p>
 
       <div class="divider" role="separator" aria-hidden="true"></div>
 
@@ -636,8 +637,8 @@
             <div class="resultK">Result state</div>
             <div class="resultState" id="resultState">Not yet evaluated</div>
             <p class="fine" id="resultCopy">
-              Complete the inputs and run the diagnostic. The scoring logic is internal and weighted.
-            </p>
+  Add your domain + category, then run the diagnostic. You’ll get an outcome state here—then you can request a written founder-focused diagnostic by email.
+</p>
 
             <div class="badgeLine" id="badgeLine">
               <span class="badgeDot" aria-hidden="true"></span>
@@ -647,7 +648,7 @@
             <!-- Formal review request (Formspree) -->
             <div class="reviewForm hidden" id="reviewFormWrap" aria-label="Formal review request">
               <div class="divider" role="separator" aria-hidden="true" style="margin:14px 0;"></div>
-              <div class="resultK">Formal review (optional)</div>
+              <div class="resultK">Receive your written diagnostic</div>
 
               <!--
                 Formspree:
@@ -678,16 +679,23 @@
                 <input type="hidden" name="_next" value="https://domainelevation.com/diagnostic/thanks.html" />
                 <input type="text" name="_gotcha" style="display:none" />
 
+                <select class="select" name="tier" required>
+  <option value="" selected disabled>Select diagnostic type</option>
+  <option value="Quick — $39">Quick — $39</option>
+  <option value="Founder — $149">Founder — $149 (recommended)</option>
+  <option value="Portfolio — from $499">Portfolio — from $499</option>
+</select>   
+
                 <button class="btn primary" type="submit" style="margin-top:12px; width:100%;">
-                  Request formal review →
+                  Submit request →
                 </button>
 
                 <div class="status" id="status" aria-live="polite"></div>
               </form>
 
               <p class="fine" style="margin-top:10px;">
-                Submissions are reviewed selectively. No valuation is provided through this form.
-              </p>
+  You’ll receive a concise written diagnostic by email within 48–72 hours.
+</p>
             </div>
           </div>
         </aside>
@@ -697,7 +705,7 @@
 
   <footer>
     <div class="footer-inner">
-      <p>Use the Domain Diagnostic™ to evaluate naming alignment before positioning hardens.</p>
+      <p>Use the Domain Diagnostic™ to get a second opinion on your domain before you commit.</p>
       <a class="footer-link" href="/diagnostic">Run a diagnostic →</a>
     </div>
   </footer>
@@ -784,12 +792,11 @@
         const score = weightedMax > 0 ? (weightedSum / weightedMax) * 100 : 0;
         const state = classify(score);
 
-        // Copy per state (matches the “good / mixed / misaligned” logic you asked for)
         const copyByState = {
-          "Aligned": "Structurally sound with clear long-term positioning. A formal review may be warranted if you are near-term serious and have decision authority.",
-          "Mixed": "Viable, but with identifiable constraints or category tension. A formal review can clarify risk, positioning, and alternative paths.",
-          "Misaligned": "High risk of semantic drift, collision, or mispositioning. If you proceed, expect constraints; a formal review is recommended only for serious repositioning efforts."
-        };
+  "Aligned": "Strong fit and credible signal. This looks like a name you can confidently build on. If you want the written diagnostic, request it below.",
+  "Mixed": "Usable, but there’s tension (category clarity, credibility, or future narrowing). You can proceed, but it’s worth tightening now. Request the written diagnostic below.",
+  "Misaligned": "High risk of confusion, drift, or credibility friction. If you keep it, expect rebrand pressure later—better to correct early. Request the written diagnostic below."
+};
 
         resultStateEl.textContent = state;
         resultCopyEl.textContent = copyByState[state] || "";
