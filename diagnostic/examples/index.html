@@ -1,0 +1,465 @@
+<!-- /diagnostic/examples/index.html
+     DomainElevation — Domain Diagnostic™ Examples
+     Ultra-minimal, matches your existing CSS tokens/layout.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example Diagnostics — DomainElevation</title>
+  <meta name="description" content="Anonymized excerpts from Domain Diagnostic™ reviews. Tone, depth, and decision framing." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://domainelevation.com/diagnostic/examples/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Example Diagnostics — Domain Diagnostic™" />
+  <meta property="og:description" content="Anonymized excerpts illustrating tone, depth, and decision framing." />
+  <meta property="og:url" content="https://domainelevation.com/diagnostic/examples/" />
+  <meta property="og:image" content="https://domainelevation.com/diagnostic-og-image.PNG" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://domainelevation.com/diagnostic-og-image.PNG" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/domainelevation-dot-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/domainelevation-dot-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/domainelevation-dot-180.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#ffffff">
+
+  <style>
+    :root{
+      --bg:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#121212;
+
+      --text-secondary:rgba(18,18,18,.78);
+      --text-muted:rgba(18,18,18,.58);
+
+      --border:rgba(18,18,18,.10);
+      --border-strong:rgba(18,18,18,.16);
+
+      --accent:#7a4cff;
+
+      --max-width:960px;
+
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      --radius:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.06);
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ width:100%; overflow-x:hidden; }
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--font-sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background: radial-gradient(transparent 1px, rgba(0,0,0,.02) 1px);
+      background-size: 7px 7px;
+      opacity:.25;
+      mix-blend-mode:multiply;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition: border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    a:hover{ border-bottom-color:rgba(18,18,18,.40); }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+
+    nav{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:var(--font-serif);
+      font-weight:500;
+      letter-spacing:-0.01em;
+      white-space:nowrap;
+      display:flex;
+      align-items:baseline;
+      gap:.35rem;
+    }
+    .brand-mark{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width:0;
+    }
+
+    nav ul a{
+      font-size:.95rem;
+      letter-spacing:.01em;
+      color:var(--text-muted);
+      padding:8px 0;
+    }
+    nav ul a:hover{
+      color:var(--ink);
+      border-bottom-color:rgba(18,18,18,.40);
+    }
+    nav ul a.active{
+      color: var(--ink);
+      border-bottom-color: rgba(18,18,18,.45);
+      font-weight: 500;
+    }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:56px 22px 88px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero{
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:42px 34px;
+    }
+
+    h1{
+      font-family:var(--font-serif);
+      font-size: clamp(2.0rem, 4.2vw, 3.05rem);
+      font-weight: 420;
+      letter-spacing:-0.015em;
+      line-height:1.14;
+      margin-bottom:14px;
+      max-width: 28ch;
+    }
+
+    .lede{
+      max-width: 82ch;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      margin-bottom: 12px;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 14px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.82rem;
+      color: var(--text-muted);
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+    }
+    .dot{
+      width:7px; height:7px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    section{ margin-top: 28px; }
+
+    .section-card{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:30px 34px;
+    }
+
+    h2{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-bottom:12px;
+    }
+
+    p{
+      max-width: 82ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    p:last-child{ margin-bottom:0; }
+
+    .divider{
+      height:1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    .exMeta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 10px 0 14px;
+      color: var(--text-muted);
+      font-size: .92rem;
+    }
+
+    .tag{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:7px 10px;
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+    }
+
+    .outcome{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.78rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+    .outDot{
+      width:7px; height:7px; border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 80%, #ffffff);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    .backRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btnLink{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--paper) 90%, transparent);
+      color: var(--ink);
+      font-size: .88rem;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+    .btnLink:hover{ border-color: var(--border-strong); }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 22px;
+      background: color-mix(in srgb, var(--bg) 88%, var(--paper));
+      position:relative;
+      z-index:1;
+    }
+
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer p{
+      font-size:.92rem;
+      color: var(--text-muted);
+      margin:0;
+      max-width: 82ch;
+    }
+    .footer-link{ font-size:.92rem; color: var(--text-secondary); }
+
+    @media (max-width: 760px){
+      nav{ flex-direction:column; align-items:flex-start; gap:12px; }
+      nav ul{ justify-content:flex-start; width:100%; gap:16px; }
+      .hero{ padding:34px 18px; }
+      .section-card{ padding:26px 18px; }
+      main{ padding:44px 18px 72px; }
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0e0f12;
+        --paper:#12141a;
+        --ink:#f4f5f7;
+
+        --text-secondary:rgba(244,245,247,.78);
+        --text-muted:rgba(244,245,247,.56);
+
+        --border:rgba(244,245,247,.10);
+        --border-strong:rgba(244,245,247,.16);
+
+        --shadow: 0 18px 50px rgba(0,0,0,.40);
+      }
+
+      body::before{
+        opacity:.12;
+        mix-blend-mode: normal;
+        background: radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px);
+        background-size: 7px 7px;
+      }
+
+      a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a:hover{ border-bottom-color: rgba(244,245,247,.35); }
+      nav ul a.active{ border-bottom-color: rgba(244,245,247,.45); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>DomainElevation</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolios">Portfolios</a></li>
+        <li><a href="/philosophy">Philosophy</a></li>
+        <li><a href="/research">Research</a></li>
+        <li><a href="/diagnostic" class="active">Diagnostic</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero">
+      <h1>Example Diagnostics</h1>
+      <p class="lede">
+        Anonymized excerpts from Domain Diagnostic™ reviews. Provided to illustrate tone, depth, and decision framing — not as templates or guarantees.
+      </p>
+
+      <div class="pill-row" aria-label="Badges">
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Founder-facing language</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Keep / rethink / pivot</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> No valuation claims</span>
+      </div>
+    </section>
+
+    <section class="section-card" aria-label="Example 1">
+      <div class="backRow">
+        <h2>Example 1</h2>
+        <span class="outcome"><span class="outDot" aria-hidden="true"></span> Outcome: Aligned</span>
+      </div>
+
+      <div class="exMeta" aria-label="Context tags">
+        <span class="tag">Context: early-stage SaaS</span>
+        <span class="tag">Stage: pre-launch</span>
+      </div>
+
+      <p>
+        This domain cleanly anchors to a defensible category and reads as credible at first exposure. The language is simple, literal, and durable enough to hold as the product evolves. There is no immediate semantic drift risk, and the name does not over-promise or constrain future expansion. Importantly, it does not require explanation to feel legitimate, which matters if you plan to sell into conservative markets.
+      </p>
+      <p>
+        The main strength here is authority fit: the name could plausibly represent the category itself rather than a feature. Collision risk appears manageable, and while there may be adjacent usages in other markets, none materially undermine your positioning.
+      </p>
+      <p><strong>Recommendation:</strong> Keep and build. This is a structurally sound name that should age well if the product executes.</p>
+    </section>
+
+    <section class="section-card" aria-label="Example 2">
+      <div class="backRow">
+        <h2>Example 2</h2>
+        <span class="outcome"><span class="outDot" aria-hidden="true"></span> Outcome: Mixed</span>
+      </div>
+
+      <div class="exMeta" aria-label="Context tags">
+        <span class="tag">Context: consumer app</span>
+        <span class="tag">Stage: live beta</span>
+      </div>
+
+      <p>
+        This domain is usable, but there is visible tension between the name and the long-term direction described. In the short term, it works as a launch vehicle; in the long term, it risks narrowing perception or requiring explanation as the product expands. The language leans slightly toward a feature or moment in time rather than an enduring category, which is where most of the risk sits.
+      </p>
+      <p>
+        Credibility is not a problem today, but durability is uncertain. If the roadmap stays tight and focused, the name may hold. If you broaden scope or reposition later, this domain could become a constraint rather than an asset. Collision risk is low, but semantic drift is the main concern.
+      </p>
+      <p><strong>Recommendation:</strong> Proceed cautiously. Acceptable to use now, but worth tightening or securing alternatives before further investment.</p>
+    </section>
+
+    <section class="section-card" aria-label="Example 3">
+      <div class="backRow">
+        <h2>Example 3</h2>
+        <span class="outcome"><span class="outDot" aria-hidden="true"></span> Outcome: Misaligned</span>
+      </div>
+
+      <div class="exMeta" aria-label="Context tags">
+        <span class="tag">Context: infrastructure / protocol</span>
+        <span class="tag">Stage: early positioning</span>
+      </div>
+
+      <p>
+        This domain introduces unnecessary friction at the naming layer. The language is either overly abstract or mismatched with how the category is commonly understood, which creates early trust and clarity issues. While it may feel distinctive internally, it does not clearly signal purpose or authority to an external audience encountering it for the first time.
+      </p>
+      <p>
+        There is meaningful risk the name will age poorly as standards harden or as competitors adopt clearer category anchors. In infrastructure contexts especially, ambiguity compounds over time. This is the kind of naming choice that often triggers rebrands later—once adoption, capital, or reputation are already attached.
+      </p>
+      <p><strong>Recommendation:</strong> Pivot early. Correcting this now is far cheaper than carrying the confusion forward.</p>
+    </section>
+
+    <section class="section-card" aria-label="Back to diagnostic">
+      <h2>Next</h2>
+      <p>
+        If you’d like a written diagnostic for your own domain, run the diagnostic and submit a request from the results panel.
+      </p>
+      <a class="btnLink" href="/diagnostic">Return to Domain Diagnostic →</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Example excerpts are provided for clarity, not as guarantees.</p>
+      <a class="footer-link" href="/diagnostic">Run a diagnostic →</a>
+    </div>
+  </footer>
+</body>
+</html>
