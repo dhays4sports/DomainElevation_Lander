@@ -679,7 +679,11 @@
                 <input type="hidden" name="_next" value="https://domainelevation.com/diagnostic/thanks.html" />
                 <input type="text" name="_gotcha" style="display:none" />
 
-                <select class="select" name="tier" required>
+              <p class="fine">
+  Choose the diagnostic that matches how consequential this decision is for you.
+</p>
+                   
+                   <select class="select" name="tier" required>
   <option value="" selected disabled>Select diagnostic type</option>
   <option value="Quick — $39">Quick — $39</option>
   <option value="Founder — $149">Founder — $149 (recommended)</option>
@@ -689,6 +693,10 @@
                 <button class="btn primary" type="submit" style="margin-top:12px; width:100%;">
                   Submit request →
                 </button>
+
+                   <p class="fine">
+  Delivery within 48–72 hours. No valuation provided.
+</p>
 
                 <div class="status" id="status" aria-live="polite"></div>
               </form>
@@ -791,7 +799,17 @@
         // Convert to 0-100
         const score = weightedMax > 0 ? (weightedSum / weightedMax) * 100 : 0;
         const state = classify(score);
+           
+const tierSelect = document.querySelector('select[name="tier"]');
 
+if (tierSelect){
+  if (state === "Misaligned"){
+    tierSelect.value = "Portfolio — from $499";
+  } else {
+    tierSelect.value = "Founder — $149";
+  }
+}
+           
         const copyByState = {
   "Aligned": "Strong fit and credible signal. This looks like a name you can confidently build on. If you want the written diagnostic, request it below.",
   "Mixed": "Usable, but there’s tension (category clarity, credibility, or future narrowing). You can proceed, but it’s worth tightening now. Request the written diagnostic below.",
