@@ -838,6 +838,9 @@ if (tierSelect){
         // Reveal formal review form (always available after a run, per your “formal review optional” framing)
         reviewWrap.classList.remove("hidden");
 
+           const examplesLink = document.getElementById("examplesLink");
+if (examplesLink) examplesLink.classList.remove("hidden");
+
         // Populate hidden payload for Formspree
         hDomain.value = domain;
         hCategory.value = category;
